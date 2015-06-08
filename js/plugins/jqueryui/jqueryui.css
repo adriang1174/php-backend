@@ -1,0 +1,25 @@
+.ui-div-img-modal-loader {height:20px;}
+.ui-div-img-modal-loader {background-image: url("images/al.gif");background-repeat: no-repeat;}
+
+.no-close .ui-dialog-titlebar {display: none }
+
+#ui-modal-loader { text-align: center;}
+
+.modal-loading {
+    display:    block;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: url("images/ajax-loader.gif")  ;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-color: #fff;
+    -moz-opacity: 0.70;
+    opacity:.70;
+    filter: alpha(opacity=70);                
+    background-position: 50% 50%;
+
+} 

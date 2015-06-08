@@ -1,0 +1,42 @@
+<?php
+
+        define( 'SSL_ENABLED'               , true);
+        define( 'HTTP_PROTOCOL'             , (SSL_ENABLED && Ftl_Path::isRunningUnderSSL() ? 'https:' : 'http:' ));
+        define( 'URL_ROOT'                 , '//localhost/globaldar2/personalnokiaprimavera/desarrollo/' );
+        define( 'HTTP_URL_ROOT'             , HTTP_PROTOCOL . URL_ROOT );
+        
+        define( 'TS_OFFSET'                 , -3); //Hora Argentina
+        
+        //BASE DE DATOS
+        define( 'DB_HOST'                   , 'localhost');
+        define( 'DB_USER'                   , 'root');
+        define( 'DB_PASS'                   , '');
+        define( 'DB_BASE'                   , 'gd2_personal_nokia_prima');
+
+        //FACEBOOK
+        define( 'FB_APP_ID'                 , '272131466316202');
+        define( 'FB_APP_SECRET'             , '9598a2021aab6d09a03b2df72e333148');
+        define( 'FB_APP_NAME'               , 'DEV_PERNOKIA_PRIMA');
+        define( 'FB_APP_NAMESPACE'          , 'devpernokiaprima');
+        define( 'FB_APP_URL'                , HTTP_PROTOCOL.'//apps.facebook.com/'.FB_APP_NAMESPACE);        
+        
+        define( 'FB_PAGE_ID'                , '135593729949698');
+        
+        define( 'FB_PAGE_URL'               , HTTP_PROTOCOL.'//www.facebook.com/iddevpage/');
+        define( 'FB_PAGE_URL_NOKIA'               , HTTP_PROTOCOL.'//www.facebook.com/MascocoTest/');
+        
+        
+        define( 'FB_TAB_URL'                , FB_PAGE_URL.'app_'.FB_APP_ID);
+        define( 'FB_TAB_URL_NOKIA'          , FB_PAGE_URL_NOKIA.'app_'.FB_APP_ID);
+        define( 'FB_MOBILE_URL'             , HTTP_PROTOCOL.HTTP_URL_ROOT.'mobile.php');
+        
+        define( 'FB_SHARE_NAME'             , 'SelfieQueBuscaSelfie');
+        define( 'BY_APP_URL'                , 'http://bit.ly/devselfiereyes');
+        
+        define( 'MAIL_CONTACTO'             ,'info@selfiequebuscaselfie.com');
+        
+        define( 'IP_KEY'                    , '87fce691cb0dad1ec5833e0e8ec160101d6dd400d797121b5e0bb16fe5952957');
+
+        //SESSION
+        define( 'SESSION_KEY'               , md5('dev_persnokia_admin') );
+?>
