@@ -1317,9 +1317,7 @@ class Ftl_ListBO {
                 }
 
             if ( $callback != null ){
-var_dump($callback);
                $data = call_user_func_array ( $callback, $param_arr);
-var_dump($data);
                if (empty($data)){
                    $data = NULL;
                }

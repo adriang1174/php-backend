@@ -14,10 +14,11 @@ class Class_Factura extends Ftl_Factura{
         
     }
 
-	public static function  obtenerListado()
+	public static function  obtenerListado($pagina=1,$reg_x_pagina=50,$filtros=null,$orden=null)
     {
         
-			return parent::obtenerListado();      
+			var_dump($filtros);
+        return parent::obtenerListado($pagina=1,$reg_x_pagina=50,$filtros=null,$orden=null);      
         
     }  
 

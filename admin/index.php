@@ -14,7 +14,9 @@
         'table'             => 'F_FAC',
         'fields'            => array (
             'TIPFAC'  			=> array('title'=>'Tipo doc','type'=>'assoc','filter'=>true,'data'=>array('1' => 'FA','9'=>'FB','2'=>'NCA','3'=>'NCB','5'=>'NDA','6'=>'NDB')),            
-            'CODFAC'  			=> array('title'=>'Número','filter'=>true),            
+            'CODFAC'  			=> array('title'=>'Número','filter'=>false),            
+            'CODFACD'  			=> array('title'=>'Número Desde','filter'=>true,'show'=>false),            
+            'CODFACH'  			=> array('title'=>'Número Hasta','filter'=>true,'show'=>false),                  
             'FECFAC'			=> array('title'=>'Fecha','filter'=>true),            
             'CNOFAC'				=> array('title'=>'Cliente','filter'=>true),     
             'TOTFAC'			=> array('title'=>'Total','filter'=>true),     
