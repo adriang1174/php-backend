@@ -39,7 +39,7 @@
 
 
     if ( !defined( 'DB_TYPE' ) )            define( 'DB_TYPE' , Ftl_DB::PDO );
-    if ( !defined( 'DB_PREFIX' ) )          define( 'DB_PREFIX' , "fb_" );
+    if ( !defined( 'DB_PREFIX' ) )          define( 'DB_PREFIX' , "" );
     
     if ( !defined( 'DB_CHARSET' ) )         define( 'DB_CHARSET' , 'utf8' );
     if ( !defined( 'DB_USE_CACHE' ) )       define( 'DB_USE_CACHE' , false );
