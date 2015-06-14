@@ -1,7 +1,7 @@
 <?php
 
         define( 'SSL_ENABLED'               , false);
-        define( 'URL_ROOT'                 , 'http://104.131.83.197:8080/' );
+        define( 'URL_ROOT'                 , 'http://104.236.219.231:8020/' );
         define( 'SSL_URL_ROOT'             , 'https://staging.webar.net:8070/pruebas/ftl/sunbrella/' );
         define( 'PATH_UPLOADS'              , PATH_SITE . 'imgs_historias' . DS);
 

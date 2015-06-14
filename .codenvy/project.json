@@ -1,0 +1,1 @@
+{"mixinTypes":["contribution"],"builders":{"configs":{}},"runners":{"configs":{}},"type":"php","attributes":{"language":["php"],"contribute_branch":["master"],"contribute_mode":["contribute"]}}
