@@ -4,7 +4,7 @@
     $page = new Ftl_PageBO();
     $page->setTitle("Facturas a emitir");
     $page->loadSripts("tooltip,form,checkbox");
-    $page->checkSession();
+    //$page->checkSession();
     $opciones = array (
         
         'dataSource'        => array (
