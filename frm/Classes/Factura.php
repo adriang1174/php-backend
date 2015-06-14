@@ -25,7 +25,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
     public $IIVA1FAC;
 
 
-    public function getTipFac()) {
+    public function getTipFac() {
         return $this->TIPFAC;
     }
 
