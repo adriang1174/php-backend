@@ -28,6 +28,7 @@
         'orderBy'           => 'TIPFAC|ASC,CODFAC|ASC',
 
         'canExport'         => false,
+        'canCAE'            => true,      
         
 		  'showActions'       => true,
         'groupExtendedActions' => false,
