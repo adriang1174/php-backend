@@ -93,10 +93,11 @@ class Ftl_Factura extends Ftl_ClaseBase{
     {
         $campos = "*";
         $from   = DB_PREFIX . self::TABLE . " f" ;
-        if($filtros)
-        			return parent::_obtenerListadoPaginado($campos, $from, $pagina, $reg_x_pagina, $filtros, $orden);
-        else
-          		return null;
+        return parent::_obtenerListadoPaginado($campos, $from, $pagina, $reg_x_pagina, $filtros, $orden);
+      	//if($filtros)
+        	//		return parent::_obtenerListadoPaginado($campos, $from, $pagina, $reg_x_pagina, $filtros, $orden);
+        //else
+         // 		return null;
     }
 
     public function guardar()
