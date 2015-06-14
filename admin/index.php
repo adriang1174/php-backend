@@ -8,7 +8,7 @@
     $opciones = array (
         
         'dataSource'        => array (
-            'class'         => 'Ftl_Factura',
+            'class'         => 'Class_Factura',
             'method'        => 'obtenerListado'
         ),
         'table'             => 'F_FAC',
