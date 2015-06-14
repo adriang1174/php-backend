@@ -9,7 +9,7 @@
         define( 'DB_HOST'                   , 'localhost');
         define( 'DB_USER'                   , 'root');
         define( 'DB_PASS'                   , 'rgz67N6QOB');
-        define( 'DB_BASE'                   , 'test');
+        define( 'DB_BASE'                   , 'felec');
 
         //FACEBOOK
         define( 'FB_APP_ID'                 , '429800770462124');
