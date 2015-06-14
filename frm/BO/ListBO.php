@@ -367,7 +367,7 @@ class Ftl_ListBO {
         
         
         $data = $this->_getData();
-            
+         var_dump($data);   
             
         $this->_numColumns = 0;
 
