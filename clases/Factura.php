@@ -17,7 +17,7 @@ class Class_Factura extends Ftl_Factura{
 	public static function  obtenerListado()
     {
         
-			parent::obtenerListado();      
+			return parent::obtenerListado();      
         
     }  
 
