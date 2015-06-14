@@ -21,7 +21,9 @@
             'CNOFAC'				=> array('title'=>'Cliente','filter'=>true),     
 			   'BAS1FAC'			=> array('title'=>'Neto s/IVA','filter'=>false),
 			   'IIVA1FAC'			=> array('title'=>'IVA','filter'=>false) ,
-            'TOTFAC'			=> array('title'=>'Total','filter'=>true),           
+            'TOTFAC'			=> array('title'=>'Total','filter'=>true),      
+            'OB1FAC'			=> array('title'=>'CAE'),   
+            'OB2FAC'			=> array('title'=>'F. Vto. CAE'),         
       ),
         'fieldId'               => 'CODFAC',
         'canOrder'          => false,
@@ -30,15 +32,8 @@
         'canExport'         => false,
         'canCAE'            => true,      
         
-		  'showActions'       => true,
-        'groupExtendedActions' => false,
-        'extendedActions'   => array(
-            'df' => array('title'=>'Download (original)','mode'=>'js','fn'=>'download_original','ui_icon'=>'ui-icon-circle-arrow-s'),
-            'uf' => array('title'=>'Upload (editada)','mode'=>'js','fn'=>'upload_editada','ui_icon'=>'ui-icon-circle-arrow-n')
-        ),      
+		  'showActions'       => false,
         'resPerPage'        => 100
-  
-
     );
 
     $list = new Ftl_ListBO( $opciones );
