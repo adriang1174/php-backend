@@ -363,7 +363,14 @@ class Ftl_ListBO {
             
             $this->export();
             exit();
-        }        
+        }     
+
+        if ($this->_io->get('solicitud','0') == '1')
+        {
+            
+            $this->solicitud();
+            exit();
+        }  
         
         
         $data = $this->_getData();
@@ -458,7 +465,7 @@ class Ftl_ListBO {
             echo "<div id=\"accordion\"><div class=\"ui-state-active ui-helper-clearfix  ui-filter-titlebar\"><span class=\"ui-filter-title\">Filtros</span></div><div class=\"ui-filter-content\">" . str_replace ("numfilters", $this->_numfilters, $this->_htmlFilter);
         }
         
-        echo "<input type=\"hidden\" name=\"orderBy\" value=\"".(($this->_opt['canOrder'] == true ) ? $this->_io->get('orderBy',$this->_opt['orderBy']) : $this->_opt['orderBy'] )."\" />\n<input type=\"hidden\" name=\"export\" id=\"exportxls\" value=\"0\" /></form>\n";
+        echo "<input type=\"hidden\" name=\"orderBy\" value=\"".(($this->_opt['canOrder'] == true ) ? $this->_io->get('orderBy',$this->_opt['orderBy']) : $this->_opt['orderBy'] )."\" />\n<input type=\"hidden\" name=\"export\" id=\"exportxls\" value=\"0\" /><input type=\"hidden\" name=\"solicitud\" id=\"solicitud\" value=\"0\" /></form>\n";
 
         $this->_jqueryOnLoad["ui-button"] = "UI.estilarBotones();\n";
         //$this->_jqueryOnLoad["screen"] = "$('#accordion').css('max-width',screen.width - 80 +'px');\n";
@@ -541,6 +548,12 @@ class Ftl_ListBO {
 
     }
 
+    public function solicitud()
+    {
+        $data = $this->_getData(true);
+		  var_dump($data);
+	 }
+
     public function export()
     {
         Ftl_Header::XLS($this->_opt['fileNameExport']);
@@ -611,6 +624,7 @@ class Ftl_ListBO {
     {
         //$aux = "<tfoot><tr><td colspan=\"{$this->_numColumns}\" class=\"foot\">\n";
         $aux = "";
+		  $aux .= "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-search\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>";
         if ( $this->_opt['canExport'] || $this->_opt['canAdd'] || $this->_opt[ 'toggleAll' ] ){
             
             //$aux = "<div style=\"float: left;\"><a href=\"javascript:void(0);\" onclick=\"exportXLS();\"><img src=\"images/shared/btn_exportar.gif\"></a></div>";
@@ -660,8 +674,13 @@ class Ftl_ListBO {
             $aux .= "document.mainform.exportxls.value ='1';\n";
             $aux .= "document.mainform.submit();\n";
             $aux .= "document.mainform.exportxls.value ='0';\n";
-            //$aux .= "$( \"#mainform\" ).attr('action','".  Ftl_Path::getFileName() . "?" . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'oper',false) . "');\n";
             $aux .= "}\n";
+            $aux .= "function solicitarCAE(){\n";
+            $aux .= "document.mainform.solicitud.value ='1';\n";
+            $aux .= "document.mainform.submit();\n";
+            $aux .= "document.mainform.solicitud.value ='0';\n";
+            $aux .= "}\n";
+
             $aux .= "</script>\n";
         }
         $aux .= "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" id=\"paging-table\"><tr>";

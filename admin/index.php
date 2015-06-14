@@ -19,17 +19,22 @@
             'CODFACH'  			=> array('title'=>'Número Hasta','filter'=>true,'show'=>false),                  
             'FECFAC'			=> array('title'=>'Fecha','filter'=>true),            
             'CNOFAC'				=> array('title'=>'Cliente','filter'=>true),     
-            'TOTFAC'			=> array('title'=>'Total','filter'=>true),     
 			   'BAS1FAC'			=> array('title'=>'Neto s/IVA','filter'=>false),
-			   'IIVA1FAC'			=> array('title'=>'IVA','filter'=>false)      
+			   'IIVA1FAC'			=> array('title'=>'IVA','filter'=>false) ,
+            'TOTFAC'			=> array('title'=>'Total','filter'=>true),           
       ),
         'fieldId'               => 'CODFAC',
         'canOrder'          => false,
-        'orderBy'           => 'TIPFAC,CODFAC',
+        'orderBy'           => 'TIPFAC|ASC,CODFAC|ASC',
 
-        'showActions'       => false,
         'canExport'         => false,
         
+		  'showActions'       => true,
+        'groupExtendedActions' => false,
+        'extendedActions'   => array(
+            'df' => array('title'=>'Download (original)','mode'=>'js','fn'=>'download_original','ui_icon'=>'ui-icon-circle-arrow-s'),
+            'uf' => array('title'=>'Upload (editada)','mode'=>'js','fn'=>'upload_editada','ui_icon'=>'ui-icon-circle-arrow-n')
+        ),      
         'resPerPage'        => 100
   
 
