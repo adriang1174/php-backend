@@ -228,8 +228,8 @@ class Ftl_ClaseBase {
                 $sqlOrder
                 LIMIT {$limit},{$offset};";
         
-	error_log($sql);
-    $res = self::getDB()->fetchAllAssoc($sql);
+	     $res = self::getDB()->fetchAllAssoc($sql);
+      var_dump($res);
         $total = self::getDB()->getFoundRows();
         if ($res != null){
             $res[0]['total'] = $total;
