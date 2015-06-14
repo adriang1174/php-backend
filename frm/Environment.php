@@ -15,7 +15,7 @@ class Ftl_Environment
                 "127.0.0.1:8080",
                 "127.0.0.1"
             ),
-            self::DEVELOPMENT   => array   ("104.236.219.231:8020","104.236.219.231:8020/admin"),
+            self::DEVELOPMENT   => array   ("104.236.219.231:8083","104.236.219.231:8083/admin"),
             self::STAGING      => array    ("staging.identidad-digital.com.ar"),
             self::PRODUCTION   => array    ("selfiequebuscareyes.com","www.selfiequebuscareyes.com")
 
