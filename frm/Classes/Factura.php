@@ -33,7 +33,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->TIPFAC = $tipfac;
     }
 
-  	public function getCodFac()) {
+  	public function getCodFac() {
         return $this->CODFAC;
     }  
 
@@ -41,7 +41,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->CODFAC = $codfac;
     }
   
-	public function getFecFac()) {
+	public function getFecFac() {
 	     return $this->FECFAC;
     }
 
@@ -49,7 +49,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->FECFAC = $fecfac;
     }
   
-    public function getCnoFac()) {
+    public function getCnoFac() {
         return $this->CNOFAC;
     }
 
@@ -57,7 +57,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->CNOFAC = $cnofac;
     }
   
-    public function getTotFac()) {
+    public function getTotFac() {
         return $this->TOTFAC;
     }
 
@@ -65,7 +65,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->TOTFAC = $totfac;
     }
   
-    public function getBas1Fac()) {
+    public function getBas1Fac() {
         return $this->BAS1FAC;
     }
 
@@ -73,7 +73,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->BAS1FAC = $bas1fac;
     }
   
-    public function getIiva1Fac()) {
+    public function getIiva1Fac() {
         return $this->IIVA1FAC;
     }
 
