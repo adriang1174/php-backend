@@ -30,6 +30,8 @@ class Ftl_Environment
     {
         if(isset($_SERVER['HTTP_HOST']))
             $host       = $_SERVER['HTTP_HOST'];
+        else
+            $host = '';
 
 
         if (in_array($host, self::$servers[self::PRODUCTION]))
