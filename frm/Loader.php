@@ -59,7 +59,8 @@ class Ftl_Loader {
 
                             //Classes
                             "Registrado"    => "/Classes/",
-							       "Factura"       => "/Classes/",
+			    "Factura"       => "/Classes/",
+			    "LoteFacturas"       => "/Classes/",			    
                             "UsuarioBO"     => "/Classes/",
                             "Response"      => "/Classes/",
                             "ClaseBase"     => "/Classes/",
