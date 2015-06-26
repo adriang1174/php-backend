@@ -1,5 +1,5 @@
 <?php
-class LoteFacturasTest extends PHPUnit_Framework_TestCase
+class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 {
     // ...
 
@@ -11,7 +11,7 @@ class LoteFacturasTest extends PHPUnit_Framework_TestCase
     {
         require "frm/init.php";
 			// Create
-        $a = new LoteFacturas(1,60362,60365);
+        $a = new Ftl_LoteFacturas(1,60362,60365);
 
         $this->assertCount(4, $a->facs);
     }    
