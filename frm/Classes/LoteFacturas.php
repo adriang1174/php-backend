@@ -16,8 +16,8 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 
     //private $id = 0;
-    public $TIPFAC;
-    public $CODFACD;
+     public $TIPFAC;
+     public $CODFACD;
 	 public $CODFACH;    
 
     public $facs;
