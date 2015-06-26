@@ -3,8 +3,11 @@ class LoteFacturasTest extends PHPUnit_Framework_TestCase
 {
     // ...
 
-   
- 	public function testCreateLote()
+       public function setUp()
+    {
+    }
+    
+    public function testCreateLote()
     {
         require "../frm/init.php";
 			// Create
