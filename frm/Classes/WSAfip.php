@@ -9,11 +9,11 @@
  *
  * @author Adrian Garcia
  */
-class Ftl_WSAfip extends Ftl_ClaseBase{
+class Ftl_WSAfip {
    
 
 
-     public function  __construct($tipfac,$codfacd,$codfach)
+     public function  __construct()
     {
 		define ("WSDL", "wsaa.wsdl");     # The WSDL corresponding to WSAA
 		define ("CERT", "ghf.crt");       # The X.509 certificate in PEM format
