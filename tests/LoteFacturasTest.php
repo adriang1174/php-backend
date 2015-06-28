@@ -32,7 +32,7 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 		require "frm/init.php";	
         $a = new Ftl_LoteFacturas(1,60362,60365);
 		$a->solicitarAfip();
-        $this->assertEquals($a->facs[0]->OBS1FAC,'123456789');
+        $this->assertEquals($a->facs[0]->OB1FAC,'123456789');
     }  
 	// ...
 }
