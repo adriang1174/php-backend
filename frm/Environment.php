@@ -28,7 +28,10 @@ class Ftl_Environment
     }
     public static function detect()
     {
-        $host       = $_SERVER['HTTP_HOST'];
+        if(isset($_SERVER['HTTP_HOST']))
+            $host       = $_SERVER['HTTP_HOST'];
+        else
+            $host = 'localhost';
 
 
         if (in_array($host, self::$servers[self::PRODUCTION]))
