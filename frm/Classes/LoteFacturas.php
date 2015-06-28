@@ -83,7 +83,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 	public function solicitarAfip()
 	{
-			$ws = new WSAfip();
+			$ws = new Ftl_WSAfip();
 			$ws->CallWSAA("WSFEv1");
 			if ($ws->AuthOK())
 			{
@@ -92,11 +92,22 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 					if($ws->solicitudOK())
 					{
 							$this->assignCAE($ws->getCAEs());
+							//$this->guardar();
 					}
 			}
 				
 	}
-
+	
+	public function assignCAE($caes)
+	{
+				foreach($this->facs as $fac)
+				{
+						$fac->setObs1Fac($caes['CAE']);
+						$fac->setObs2Fac($caes['FVTOCAE']);						
+				}
+			
+	}
+	
     public function guardar()
     {
         
