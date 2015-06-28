@@ -60,7 +60,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
    public function getFacturas()
 	 {
 				$condicion = " TIPFAC = ".$this->TIPFAC." AND CODFAC BETWEEN ".$this->CODFACD." AND ".$this->CODFACH;
-				$res = parent::_obtenerListadoPaginado (  $from=DB_PREFIX . self::TABLE,$filtros=$condicion );
+				$res = parent::_obtenerListadoPaginado (  $campos="*",$from=DB_PREFIX . self::TABLE,$pagina=1,$reg_x_pagina=50,$filtros=$condicion ,$orden=null);
 				$facs = array();
 				var_dump($res);
 				foreach($res as $row)
