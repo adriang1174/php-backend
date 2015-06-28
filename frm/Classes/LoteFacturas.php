@@ -63,6 +63,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				
 				$res = parent::_getDatos (  $condicion );
 				$facs = array();
+				var_dump($res);
 				foreach($res as $row)
 				{
 						$fac = new Ftl_Factura(null,false,$row['TIPFAC'],$row['CODFAC'],$row['FECFAC'],$row['CNOFAC'],$row['TOTFAC'],$row['BAS1FAC'],$row['IIVA1FAC']);
