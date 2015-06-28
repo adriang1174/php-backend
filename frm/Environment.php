@@ -15,7 +15,7 @@ class Ftl_Environment
                 "127.0.0.1:8080",
                 "127.0.0.1"
             ),
-            self::DEVELOPMENT   => array   ("104.236.219.231:8084","104.236.219.231:8084/admin"),
+            self::DEVELOPMENT   => array   ("104.236.219.231:8084","104.236.219.231:8084/admin","104.236.219.231:8084"),
             self::STAGING      => array    ("staging.identidad-digital.com.ar"),
             self::PRODUCTION   => array    ("selfiequebuscareyes.com","www.selfiequebuscareyes.com")
 
@@ -33,7 +33,7 @@ class Ftl_Environment
         else
             $host = 'localhost';
 
-
+		var_dump($host);
         if (in_array($host, self::$servers[self::PRODUCTION]))
         {
                 return self::PRODUCTION;
