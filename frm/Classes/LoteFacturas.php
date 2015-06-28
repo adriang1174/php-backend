@@ -62,10 +62,8 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				$condicion = " TIPFAC = ".$this->TIPFAC." AND CODFAC BETWEEN ".$this->CODFACD." AND ".$this->CODFACH;
 				$res = parent::_obtenerListadoPaginado (  $campos="*",$from=DB_PREFIX . self::TABLE,$pagina=1,$reg_x_pagina=50,$filtros=$condicion ,$orden=null);
 				$facs = array();
-				var_dump($res);
 				foreach($res as $row)
 				{
-						var_dump($row);
 						$fac = new Ftl_Factura(null,false,$row['TIPFAC'],$row['CODFAC'],$row['FECFAC'],$row['CNOFAC'],$row['TOTFAC'],$row['BAS1FAC'],$row['IIVA1FAC']);
 						array_push($facs,$fac);
 				}
@@ -74,9 +72,10 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 	public function validarLote()
 	{
-				$consulta = "SELECT COUNT(1) FROM ".DB_PREFIX . self::TABLE. " WHERE TIPFAC = ".$this->TIPFAC." AND CODFAC < ".$this->CODFACD." AND OBS1FAC IS NULL";
-				$res = parent::_getDatos($consulta);
-				if($res[0] > 0)
+				$condicion =  " TIPFAC = ".$this->TIPFAC." AND CODFAC < ".$this->CODFACD." AND OBS1FAC IS NULL";
+				$res = parent::_obtenerListadoPaginado (  $campos="*",$from=DB_PREFIX . self::TABLE,$pagina=1,$reg_x_pagina=50,$filtros=$condicion ,$orden=null);				
+			
+				if(count($res) > 0)
 					return false;
 				else
 					return true;
