@@ -5,6 +5,7 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 
        public function setUp()
     {
+        $skip_session = true;
         require "frm/init.php";
     }
     
