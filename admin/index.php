@@ -1,4 +1,5 @@
 <?php
+    var_dupm($_SERVER['HTTP_HOST']);
     require_once '../frm/init.php';
     
     $page = new Ftl_PageBO();
