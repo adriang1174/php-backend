@@ -5,11 +5,12 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 
        public function setUp()
     {
+        require "frm/init.php";
     }
     
     public function testCreateLote()
     {
-        require "frm/init.php";
+
 			// Create
         $a = new Ftl_LoteFacturas(1,60362,60365);
 
@@ -18,11 +19,17 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 
     public function testValidarLote()
     {
-        require "frm/init.php";
 			// Create
         $a = new Ftl_LoteFacturas(1,60362,60365);
         $this->assertTrue($a->validarLote());
     }    
 
+    public function testSolicitarAfip()
+    {
+			// Create
+        $a = new Ftl_LoteFacturas(1,60362,60365);
+		$a->solicitarAfip();
+        $this->assertEquals($a->facs[0]->OBS1FAC,'123456789');
+    }  
 	// ...
 }
