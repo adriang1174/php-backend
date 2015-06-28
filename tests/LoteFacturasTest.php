@@ -17,15 +17,16 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
         $a = new Ftl_LoteFacturas(1,60362,60365);
 
         $this->assertCount(4, $a->facs);
-    }    
+    }    */
 
     public function testValidarLote()
     {
 			// Create
+		require "frm/init.php";		
         $a = new Ftl_LoteFacturas(1,60362,60365);
         $this->assertTrue($a->validarLote());
     }    
-	*/
+	
     public function testSolicitarAfip()
     {
 			// Create
