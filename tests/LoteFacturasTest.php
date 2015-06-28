@@ -33,5 +33,16 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 		$a->solicitarAfip();
         $this->assertEquals($a->facs[0]->OB1FAC,'123456789');
     }  
+    
+    public function testSolicitarAfipGuardar()
+    {
+			// Create
+        $a = new Ftl_LoteFacturas(1,60362,60365);
+		$a->solicitarAfip();
+		$a->guardar();
+		$f = new Ftl_Factura();
+		$f->_recuperar ( 'F_FAC', 'TIPFAC = 1 AND CODFAC = 60362', $campos="*" );
+        $this->assertEquals($f->OB1FAC,'123456789');
+    }  
 	// ...
 }

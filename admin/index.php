@@ -36,6 +36,16 @@
         'resPerPage'        => 100
     );
 
+    $io = new Ftl_IOHelper();
+    $io->addFromArray($_REQUEST);
+    
+    if($io->get('solicitud','0') == '1')
+    {
+		$lote = new Ftl_LoteFacturas($io->get('TIPFAC','0'),$io->get('CODFACD','0'),$io->get('CODFACH','0'));
+		$lote->solicitarAfip();    
+		$lote->guardar();
+    }
+    
     $list = new Ftl_ListBO( $opciones );
     
 
