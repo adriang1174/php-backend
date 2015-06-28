@@ -33,7 +33,6 @@ class Ftl_Environment
         else
             $host = 'localhost';
 
-		var_dump($host);
         if (in_array($host, self::$servers[self::PRODUCTION]))
         {
                 return self::PRODUCTION;

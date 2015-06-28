@@ -20,8 +20,8 @@ class Class_Factura extends Ftl_Factura{
 			
         $filtros = str_replace ( 'CODFACD =' , 'CODFAC >=' , $filtros );
         $filtros = str_replace ( 'CODFACH =' , 'CODFAC <=' , $filtros );
-        var_dump($filtros);
-        return parent::obtenerListadoPaginado($pagina,$reg_x_pagina,$filtros,$orden);      
+        //var_dump($filtros);
+        return parent::obtenerListado($pagina,$reg_x_pagina,$filtros,$orden);      
         
     }  
 
