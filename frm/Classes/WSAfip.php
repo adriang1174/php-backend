@@ -15,7 +15,7 @@ class Ftl_WSAfip {
 
      public function  __construct()
     {
-		define ("WSDL", "wsaa.wsdl");     # The WSDL corresponding to WSAA
+		//define ("WSDL", "wsaa.wsdl");     # The WSDL corresponding to WSAA
 		define ("CERT", "ghf.crt");       # The X.509 certificate in PEM format
 		define ("PRIVATEKEY", "ghf.key"); # The private key correspoding to CERT (PEM)
 		define ("PASSPHRASE", "xxxxx"); # The passphrase (if any) to sign
