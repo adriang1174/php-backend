@@ -72,7 +72,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 	public function validarLote()
 	{
-				$condicion =  " TIPFAC = ".$this->TIPFAC." AND CODFAC < ".$this->CODFACD." AND OBS1FAC IS NULL";
+				$condicion =  " TIPFAC = ".$this->TIPFAC." AND CODFAC < ".$this->CODFACD." AND OB1FAC IS NULL";
 				$res = parent::_obtenerListadoPaginado (  $campos="*",$from=DB_PREFIX . self::TABLE,$pagina=1,$reg_x_pagina=50,$filtros=$condicion ,$orden=null);				
 			
 				if(count($res) > 0)

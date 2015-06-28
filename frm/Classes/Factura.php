@@ -23,8 +23,8 @@ class Ftl_Factura extends Ftl_ClaseBase{
     public $TOTFAC;
     public $BAS1FAC;
     public $IIVA1FAC;
-    public $OBS1FAC;
-    public $OBS2FAC;
+    public $OB1FAC;
+    public $OB2FAC;
 
 
     public function getTipFac() {
@@ -84,19 +84,19 @@ class Ftl_Factura extends Ftl_ClaseBase{
     }
 
     public function getObs1Fac() {
-        return $this->OBS1FAC;
+        return $this->OB1FAC;
     }
 
 	public function setObs1Fac($obs1fac) {
-        $this->OBS1FAC = $obs1fac;
+        $this->OB1FAC = $obs1fac;
     }
 
     public function getObs2Fac() {
-        return $this->OBS2FAC;
+        return $this->OB2FAC;
     }
 
 	public function setObs2Fac($obs2fac) {
-        $this->OBS2FAC = $obs2fac;
+        $this->OB2FAC = $obs2fac;
     }
 
 
@@ -140,8 +140,8 @@ class Ftl_Factura extends Ftl_ClaseBase{
             "TOTFAC"              => $this->getTotFac(),
             "BAS1FAC"             => $this->getBas1Fac(),
             "IIVA1FAC"            => $this->getIiva1Fac(),
-            "OBS1FAC"            => $this->getObs1Fac(),
-            "OBS2FAC"            => $this->getObs2Fac()
+            "OB1FAC"            => $this->getObs1Fac(),
+            "OB2FAC"            => $this->getObs2Fac()
         );
 
 
