@@ -59,8 +59,9 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
    public function getFacturas()
 	 {
-				$condicion = "TIPFAC = ".$this->TIPFAC." AND CODFAC BETWEEN ".$this->CODFACD." AND ".$this->CODFACH;
-				$res = parent::_recuperar ( DB_PREFIX . self::TABLE, $condicion, $campos="*" );
+				$condicion = "select * from F_FAC where TIPFAC = ".$this->TIPFAC." AND CODFAC BETWEEN ".$this->CODFACD." AND ".$this->CODFACH;
+				
+				$res = parent::_getDatos (  $condicion );
 				$facs = array();
 				foreach($res as $row)
 				{
