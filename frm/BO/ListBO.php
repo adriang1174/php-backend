@@ -550,8 +550,8 @@ class Ftl_ListBO {
 
     public function solicitud()
     {
-        $data = $this->_getData(true);
-		  var_dump($data);
+        //$data = $this->_getData(true);
+		  //var_dump($data);
 	 }
 
     public function export()
