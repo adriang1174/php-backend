@@ -249,7 +249,7 @@ class Ftl_ListBO {
     
     public function showError($error)
     {
-    	$this->_jqueryOnLoad["error-msg"] = "UI.alert(".$error.",{title:'Atención'});";    
+    	$this->_jqueryOnLoad["error-msg"] = "UI.alert('".$error."',{title:'Atención'});";    
     }
 
     public function __construct( $options = array() ) {
