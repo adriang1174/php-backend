@@ -7,10 +7,10 @@ class Class_Factura extends Ftl_Factura{
 
     
 
-    public function  __construct($id=null,$uid=false)
+    public function  __construct($id=null,$guid=false,$tipfac=null,$codfac=null,$fecfac=null,$cnofac=null,$totfac=null,$bas1fac=null,$iiva1fac=null)
     {
         
-			parent::__construct();      
+			parent::__construct($id=null,$guid=false,$tipfac,$codfac,$fecfac,$cnofac,$totfac,$bas1fac,$iiva1fac);      
         
     }
 
