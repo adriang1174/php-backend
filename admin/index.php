@@ -55,7 +55,7 @@
     
     $list = new Ftl_ListBO( $opciones );
     if($error != '')
-    	$list->_jqueryOnLoad["error-msg"] = "UI.alert(".$error.",{title:'Atención'});";
+    	$list->showError($error);
     $page->showTop();
     $list->show();
     $page->showFoot();
