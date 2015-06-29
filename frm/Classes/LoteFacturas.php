@@ -94,6 +94,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 							$this->assignCAE($ws->getCAEs());
 							//$this->guardar();
 					}
+					//Manejar else de auth y solicitud
 			}
 				
 	}

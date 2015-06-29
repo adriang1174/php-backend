@@ -4,6 +4,7 @@
     $page = new Ftl_PageBO();
     $page->setTitle("Facturas a emitir");
     $page->loadSripts("tooltip,form,checkbox");
+    $page->showMenu = false;
     //$page->checkSession();
     $opciones = array (
         
@@ -38,17 +39,23 @@
 
     $io = new Ftl_IOHelper();
     $io->addFromArray($_REQUEST);
-    
+    $error ="";
     if($io->get('solicitud','0') == '1')
     {
 		$lote = new Ftl_LoteFacturas($io->get('TIPFAC','0'),$io->get('CODFACD','0'),$io->get('CODFACH','0'));
-		$lote->solicitarAfip();    
-		$lote->guardar();
+		//Antes de solicitar hay que validar lote
+		if($lote->validarLote())
+		{
+			$lote->solicitarAfip();    
+			$lote->guardar();
+		}
+		else
+			$error = "Error. Verifique existan documentos previos con CAE generado";
     }
     
     $list = new Ftl_ListBO( $opciones );
-    
-
+    if($error != '')
+    	$list->_jqueryOnLoad["error-msg"] = "UI.alert(".$error.",{title:'Atención'});";
     $page->showTop();
     $list->show();
     $page->showFoot();

@@ -28,7 +28,7 @@ $titulo         = "";
     
 ?>
                         <!--div class="nav-divider">&nbsp;</div-->
-			<a href="logout.php" id="logout">Logout</a>
+		<!--	<a href="logout.php" id="logout">Logout</a> -->
 			<div class="clear">&nbsp;</div>
 		</div>
 		<!-- end nav-right -->
