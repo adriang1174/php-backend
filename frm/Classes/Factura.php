@@ -125,6 +125,11 @@ class Ftl_Factura extends Ftl_ClaseBase{
          // 		return null;
     }
 
+    
+    public function _recuperar ( $tabla, $condicion, $campos="*" ){
+    		parent::_recuperar ( $tabla, $condicion, $campos="*" );
+    }
+    
     public function guardar()
     {
         
