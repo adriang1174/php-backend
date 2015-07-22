@@ -83,6 +83,60 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 	public function solicitarAfip()
 	{
+			require 'exceptionhandler.php';
+			require 'wsaa.class.php';
+			require 'wsfe.class.php';
+			
+			errors = array();
+			/**********************
+			 * WSAA
+			 * ********************/
+			$wsaa = new WSAA('./'); 
+			
+			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
+			  if (!$wsaa->generar_TA()) {
+			    	 array_push($errors,'error al obtener el TA');
+			  }
+			} 
+			/**********************
+			 * WSFE
+			 * ********************
+			 */
+			$wsfe = new WSFE('./');
+			// Carga el archivo TA.xml
+			if(!$wsfe->openTA())
+				array_push($errors,"WSFE open TA Error");
+			
+			foreach($this->facs as $regfac)
+			{
+				 $cbte = array(
+	                     'Concepto' => 1,
+	                     'DocTipo' => 80,
+	                     'DocNro' => str_replace(".","",$regfac['CNIFAC']),
+		                 'CbteDesde' => $regfac['CODFACD'],
+	                     'CbteHasta' => $regfac['CODFACD'],
+	                     'CbteFch' => date('Ymd',strtotime($regfac['FECFAC']),
+	                     'ImpTotal' => $regfac['TOTFAC'],
+	                     'ImpTotConc' => 0, //$regfac['ImpTotConc'],
+	                     'ImpNeto' => $regfac['BAS1FAC'],
+	                     'ImpOpEx' => 0.0 ,//$regfac['ImpOpEx'],
+	                     'ImpIVA' => $regfac['IIVA1FAC'],
+	                     'ImpTrib' => 0.0 //$regfac['ImpTrib'],
+	                     'MonId' => 'PES',
+	                     'MonCotiz' => 1,
+	                     'Iva' => array( 'AlicIva' => array( 'Id' => 5, //21%
+	                     									'BaseImp' => $regfac['BAS1FAC'],
+	                     									'Importe' => $regfac['IIVA1FAC']
+	                     									)
+	                     				)
+						 );
+				  array_push($cbtes,$cbte);
+			    }
+
+
+			$cae = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
+			print_r($cae);
+			/*
 			$ws = new Ftl_WSAfip();
 			$ws->CallWSAA("WSFEv1");
 			if ($ws->AuthOK())
@@ -96,6 +150,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 					}
 					//Manejar else de auth y solicitud
 			}
+			*/
 				
 	}
 	
