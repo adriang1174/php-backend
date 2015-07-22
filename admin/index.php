@@ -47,7 +47,7 @@
 		if($lote->validarLote())
 		{
 			$lote->solicitarAfip();    
-			$lote->guardar();
+			//$lote->guardar();
 		}
 		else
 			$error = "Error. Verifique existan documentos previos con CAE generado";
