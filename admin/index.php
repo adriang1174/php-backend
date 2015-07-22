@@ -1,5 +1,9 @@
 <?php
     require_once '../frm/init.php';
+	require '../exceptionhandler.php';
+	require '../wsaa.class.php';
+	require '../wsfe.class.php';
+
     
     $page = new Ftl_PageBO();
     $page->setTitle("Facturas a emitir");

@@ -83,9 +83,6 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 	public function solicitarAfip()
 	{
-			require '/exceptionhandler.php';
-			require '/wsaa.class.php';
-			require '/wsfe.class.php';
 			
 			$errors = array();
 			/**********************
