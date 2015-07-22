@@ -115,7 +115,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	                     'DocNro' => str_replace(".","",$regfac['CNIFAC']),
 		                 'CbteDesde' => $regfac['CODFACD'],
 	                     'CbteHasta' => $regfac['CODFACD'],
-	                     'CbteFch' => date('Ymd',strtotime($regfac['FECFAC']),
+	                     'CbteFch' => date('Ymd',strtotime($regfac['FECFAC'])),
 	                     'ImpTotal' => $regfac['TOTFAC'],
 	                     'ImpTotConc' => 0, //$regfac['ImpTotConc'],
 	                     'ImpNeto' => $regfac['BAS1FAC'],
