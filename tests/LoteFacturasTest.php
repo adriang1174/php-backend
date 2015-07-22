@@ -19,6 +19,7 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
         $this->assertCount(4, $a->facs);
     }    
 
+/*
     public function testValidarLote()
     {
 			// Create
@@ -44,5 +45,7 @@ class Ftl_LoteFacturasTest extends PHPUnit_Framework_TestCase
 		$f->_recuperar ( 'F_FAC', array('TIPFAC' => 1 ,'CODFAC' => 60362), $campos="*" );
         $this->assertEquals($f->OB1FAC,'123456789');
     }  
+    
+    */
 	// ...
 }
