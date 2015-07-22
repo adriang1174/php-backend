@@ -64,11 +64,12 @@ $regfac['fecha_venc_pago'] = date('Ymd');
 //$nro = $wsfe->ultNro();
 //if($nro == false) echo "erorrrrrrr ultNro";
 
+*/
 $cmp = $wsfe->recuperaLastCMP($ptovta, $tipocbte);
 if($cmp == false) echo "erorrrrrrr cmppp";
 
-*/
 
+/*
 $regfac['DocTipo'] = 80; //El cuit del comprador 
 $regfac['DocNro']  = 23111111112;
 $regfac['CbteDesde'] = 60365;
@@ -163,11 +164,11 @@ $cbtes = array(
                      				)                     
 					 )					 
              );
-*/
+
 $cae = $wsfe->aut( 9998, 1, 1, $cbtes);
 
 //if($cae == false) echo "erorrrrrrr Caeee";
 
 print_r($cae);
-
+*/
 ?>
