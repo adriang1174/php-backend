@@ -121,7 +121,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	                     'ImpNeto' => $regfac['BAS1FAC'],
 	                     'ImpOpEx' => 0.0 ,//$regfac['ImpOpEx'],
 	                     'ImpIVA' => $regfac['IIVA1FAC'],
-	                     'ImpTrib' => 0.0 //$regfac['ImpTrib'],
+	                     'ImpTrib' => 0.0, //$regfac['ImpTrib'],
 	                     'MonId' => 'PES',
 	                     'MonCotiz' => 1,
 	                     'Iva' => array( 'AlicIva' => array( 'Id' => 5, //21%
