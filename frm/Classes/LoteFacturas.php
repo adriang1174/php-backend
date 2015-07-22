@@ -88,7 +88,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			/**********************
 			 * WSAA
 			 * ********************/
-			$wsaa = new WSAA('./'); 
+			$wsaa = new WSAA('../'); 
 			
 			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
 			  if (!$wsaa->generar_TA()) {
@@ -99,7 +99,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			 * WSFE
 			 * ********************
 			 */
-			$wsfe = new WSFE('./');
+			$wsfe = new WSFE('../');
 			// Carga el archivo TA.xml
 			if(!$wsfe->openTA())
 				array_push($errors,"WSFE open TA Error");
