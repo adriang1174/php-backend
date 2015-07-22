@@ -87,7 +87,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			require 'wsaa.class.php';
 			require 'wsfe.class.php';
 			
-			errors = array();
+			$errors = array();
 			/**********************
 			 * WSAA
 			 * ********************/

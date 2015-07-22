@@ -130,7 +130,7 @@ class WSFE {
              'PtoVta'   => $ptovta,
              'CbteTipo' => $this->tipo_cbte));
 
-    //var_dump($results);
+    var_dump($results);
     $e = $this->_checkErrors($results, 'FECompUltimoAutorizado');
 
     return $e == false ? $results->FECompUltimoAutorizadoResult->CbteNro : false;
