@@ -143,7 +143,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
 
             "TIPFAC"              => $this->getTipFac(),
             "CODFAC"              => $this->getCodFac(),
-            "CNIFAC"			  => $this->CNIFAC;
+            "CNIFAC"			  => $this->CNIFAC,
             "FECFAC"              => $this->getFecFac(),
             "CNOFAC"              => $this->getCnoFac(),
             "TOTFAC"              => $this->getTotFac(),
