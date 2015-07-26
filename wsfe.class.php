@@ -279,9 +279,9 @@ class WSFE {
                      'FchVtoPago' => $regfac['FchVtoPago'],
                      'MonId' => 'PES',
                      'MonCotiz' => 1,
-                     'CbtesAsoc' => $cbtes */
+                     'CbtesAsoc' => $cbtes 
 	                
-                     )//FECAEDetRequest
+                     )//FECAEDetRequest */
                  )//FeDetReq 
        		)//FECAEReq
      )//FECAESolicitar
