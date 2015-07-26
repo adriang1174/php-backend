@@ -38,7 +38,7 @@ class WSAA {
   public function __construct($path = './', $service = 'wsfe') 
   {
     //$this->path = $path;
-    $this->path = PATH_SITE
+    $this->path = PATH_SITE;
     var_dump($this->path);
     $this->service = $service;    
     
