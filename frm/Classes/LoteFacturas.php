@@ -131,7 +131,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				  array_push($cbtes,$cbte);
 			    }
 
-			print_r($cbtes);
+			//print_r($cbtes);
 			$cae = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
 			print_r($cae);
 			/*
