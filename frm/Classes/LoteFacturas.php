@@ -132,9 +132,16 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				  array_push($cbtes,$cbte);
 			    }
 
-			print_r($cbtes);
-			$cae = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
-			print_r($cae);
+			//print_r($cbtes);
+			$result = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
+			//Chequeo de Errores aqui
+			
+			$this->assignCAE($result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE,$results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto);
+			//$cae = $result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE;
+			//$caefvto = $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto;
+			
+			//print_r($cae);
+			
 			/*
 			$ws = new Ftl_WSAfip();
 			$ws->CallWSAA("WSFEv1");
@@ -153,12 +160,12 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				
 	}
 	
-	public function assignCAE($caes)
+	public function assignCAE($cae,$caefvto)
 	{
 				foreach($this->facs as $fac)
 				{
-						$fac->setObs1Fac($caes['CAE']);
-						$fac->setObs2Fac($caes['FVTOCAE']);						
+						$fac->setObs1Fac($cae);
+						$fac->setObs2Fac($caefvto);						
 				}
 			
 	}
