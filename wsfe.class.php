@@ -132,9 +132,10 @@ class WSFE {
              'CbteTipo' => $this->tipo_cbte));
 
     //var_dump($results);
-    $e = $this->_checkErrors($results, 'FECompUltimoAutorizado');
+    //$e = $this->_checkErrors($results, 'FECompUltimoAutorizado');
 
-    return $e == false ? $results->FECompUltimoAutorizadoResult->CbteNro : false;
+    //return $e == false ? $results->FECompUltimoAutorizadoResult->CbteNro : false;
+    return $results;
   }
   
   /*
