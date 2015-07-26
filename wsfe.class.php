@@ -288,7 +288,9 @@ class WSFE {
      );
     
     //$e = $this->_checkErrors($results, 'FECAESolicitar');
-      var_dump($this->client->__getLastRequest());
+    echo "REQUEST HEADERS:\n" . $this->client->__getLastRequestHeaders() . "\n";
+      //var_dump($this->client->__getLastRequest());
+    echo "REQUEST:\n" . $this->client->__getLastRequest() . "\n";
     //return $e == false ? Array( 'cae' => $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE, 'fecha_vencimiento' => $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto ): false;
     return $results;
   }
