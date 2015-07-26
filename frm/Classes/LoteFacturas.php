@@ -142,7 +142,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			//$cae = $result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE;
 			//$caefvto = $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto;
 			
-			print_r($this->fac);
+			print_r($this->facs);
 			
 			/*
 			$ws = new Ftl_WSAfip();
