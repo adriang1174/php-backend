@@ -97,7 +97,7 @@ class WSFE {
   public function openTA()
   {
     $this->TA = simplexml_load_file($this->path.self::TA);
-    
+    print_r($this->ta);
     return $this->TA == false ? false : true;
   }
   
@@ -131,7 +131,7 @@ class WSFE {
              'PtoVta'   => $ptovta,
              'CbteTipo' => $this->tipo_cbte));
 
-    var_dump($results);
+    //var_dump($results);
     $e = $this->_checkErrors($results, 'FECompUltimoAutorizado');
 
     return $e == false ? $results->FECompUltimoAutorizadoResult->CbteNro : false;
@@ -260,9 +260,10 @@ class WSFE {
                   'PtoVta' => $ptovta,
                   'CbteTipo' => $cbtetipo,
                   ),
-               'FeDetReq' => $cbtes
-               /*array(
-                   'FECAEDetRequest' => array(
+               'FeDetReq' => 
+               array(
+                   'FECAEDetRequest' => $cbtes
+                   /*array(
                      'Concepto' => 1,
                      'DocTipo' => $regfac['DocTipo'],
                      'DocNro' => $regfac['DocNro'],
@@ -278,10 +279,10 @@ class WSFE {
                      'FchVtoPago' => $regfac['FchVtoPago'],
                      'MonId' => 'PES',
                      'MonCotiz' => 1,
-                     'CbtesAsoc' => $cbtes
+                     'CbtesAsoc' => $cbtes */
 	                
                      )//FECAEDetRequest
-                 )//FeDetReq */
+                 )//FeDetReq 
        		)//FECAEReq
      )//FECAESolicitar
      );
