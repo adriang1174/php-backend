@@ -19,7 +19,6 @@ class Ftl_Factura extends Ftl_ClaseBase{
     public $TIPFAC;
     public $CODFAC;
     public $CODFACD;
-    public $CNIFAC;
     public $CODFACH;    
     public $FECFAC;
     public $CNOFAC;
