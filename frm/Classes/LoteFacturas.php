@@ -137,7 +137,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			//Chequeo de Errores aqui
 			print_r($result);
 			
-			$this->assignCAE($result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE,$results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto);
+			$this->assignCAE($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAE,$results->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAEFchVto);
 			
 			//$cae = $result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE;
 			//$caefvto = $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto;
