@@ -110,7 +110,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				 $cbte = array(
 	                     'Concepto' => 1,
 	                     'DocTipo' => 80,
-	                     'DocNro' => str_replace(".","",$regfac->CNIFAC),
+	                     'DocNro' => str_replace("-","",str_replace(".","",$regfac->CNIFAC)),
 		                 'CbteDesde' => $regfac->CODFAC,
 	                     'CbteHasta' => $regfac->CODFAC,
 	                     'CbteFch' => date('Ymd',strtotime($regfac->FECFAC)),
@@ -131,9 +131,9 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				  array_push($cbtes,$cbte);
 			    }
 
-			print_r($cbtes);
-			//$cae = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
-			//print_r($cae);
+			//print_r($cbtes);
+			$cae = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
+			print_r($cae);
 			/*
 			$ws = new Ftl_WSAfip();
 			$ws->CallWSAA("WSFEv1");
