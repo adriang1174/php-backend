@@ -451,7 +451,8 @@ class Ftl_ListBO {
                 $html .= $this->parseOptionsColumn($cols);
                 foreach( $this->_opt [ 'fields' ] as $field => $options )
                 {
-                    $html.= $this->parseDataColumn($field, $cols[$field]);
+                    if($options['show'] == 'true')
+                    	$html.= $this->parseDataColumn($field, $cols[$field]);
                 }
 
                 

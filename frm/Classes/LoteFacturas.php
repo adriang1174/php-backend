@@ -85,6 +85,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	{
 			
 			$errors = array();
+			$cbtes = array();
 			/**********************
 			 * WSAA
 			 * ********************/
