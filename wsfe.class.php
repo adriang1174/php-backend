@@ -260,10 +260,10 @@ class WSFE {
                   'PtoVta' => $ptovta,
                   'CbteTipo' => $cbtetipo,
                   ),
-               'FeDetReq' => 
-               array(
+               'FeDetReq' => $cbtes
+               /*array(
                    'FECAEDetRequest' => $cbtes
-                   /*array(
+                   array(
                      'Concepto' => 1,
                      'DocTipo' => $regfac['DocTipo'],
                      'DocNro' => $regfac['DocNro'],
@@ -281,16 +281,16 @@ class WSFE {
                      'MonCotiz' => 1,
                      'CbtesAsoc' => $cbtes 
 	                
-                     )//FECAEDetRequest */
-                 )//FeDetReq 
+                     )//FECAEDetRequest 
+                 )//FeDetReq */
        		)//FECAEReq
      )//FECAESolicitar
      );
     
     //$e = $this->_checkErrors($results, 'FECAESolicitar');
-    echo "REQUEST HEADERS:\n" . $this->client->__getLastRequestHeaders() . "\n";
+    //echo "REQUEST HEADERS:\n" . $this->client->__getLastRequestHeaders() . "\n";
       //var_dump($this->client->__getLastRequest());
-    echo "REQUEST:\n" . $this->client->__getLastRequest() . "\n";
+    //echo "REQUEST:\n" . $this->client->__getLastRequest() . "\n";
     //return $e == false ? Array( 'cae' => $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE, 'fecha_vencimiento' => $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto ): false;
     return $results;
   }

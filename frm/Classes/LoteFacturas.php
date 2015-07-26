@@ -133,7 +133,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 			//print_r($cbtes);
 			$cae = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
-			//print_r($cae);
+			print_r($cae);
 			/*
 			$ws = new Ftl_WSAfip();
 			$ws->CallWSAA("WSFEv1");
