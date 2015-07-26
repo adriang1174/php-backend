@@ -115,17 +115,17 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	                     'CbteHasta' => $regfac->CODFAC,
 	                     //'CbteFch' => date('Ymd',strtotime($regfac->FECFAC)),
 	                     'CbteFch' => date('Ymd'),
-	                     'ImpTotal' => $regfac->TOTFAC,
+	                     'ImpTotal' => str_replace("$","",$regfac->TOTFAC),
 	                     'ImpTotConc' => 0, //$regfac['ImpTotConc'],
-	                     'ImpNeto' => $regfac->BAS1FAC,
+	                     'ImpNeto' => str_replace("$","",$regfac->BAS1FAC),
 	                     'ImpOpEx' => 0.0 ,//$regfac['ImpOpEx'],
-	                     'ImpIVA' => $regfac->IIVA1FAC,
+	                     'ImpIVA' => str_replace("$","",$regfac->IIVA1FAC),
 	                     'ImpTrib' => 0.0, //$regfac['ImpTrib'],
 	                     'MonId' => 'PES',
 	                     'MonCotiz' => 1,
 	                     'Iva' => array( 'AlicIva' => array( 'Id' => 5, //21%
-	                     									'BaseImp' => $regfac->BAS1FAC,
-	                     									'Importe' => $regfac->IIVA1FAC
+	                     									'BaseImp' => str_replace("$","",$regfac->BAS1FAC),
+	                     									'Importe' => str_replace("$","",$regfac->IIVA1FAC)
 	                     									)
 	                     				)
 						 );
