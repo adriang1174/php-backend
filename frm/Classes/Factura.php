@@ -113,7 +113,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->setTotFac($totfac);
         $this->setBas1Fac($bas1fac);
         $this->setIiva1Fac($iiva1fac);
-        $this->cnifac = $cnifac;
+        $this->CNIFAC = $cnifac;
     }
 
 
