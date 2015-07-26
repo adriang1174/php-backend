@@ -64,7 +64,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				$facs = array();
 				foreach($res as $row)
 				{
-						$fac = new Ftl_Factura(null,false,$row['TIPFAC'],$row['CODFAC'],$row['FECFAC'],$row['CNOFAC'],$row['TOTFAC'],$row['BAS1FAC'],$row['IIVA1FAC']);
+						$fac = new Ftl_Factura(null,false,$row['TIPFAC'],$row['CODFAC'],$row['FECFAC'],$row['CNOFAC'],$row['TOTFAC'],$row['BAS1FAC'],$row['IIVA1FAC'],$row['CNIFAC']);
 						array_push($facs,$fac);
 				}
 				return $facs;
@@ -111,8 +111,8 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	                     'Concepto' => 1,
 	                     'DocTipo' => 80,
 	                     'DocNro' => str_replace(".","",$regfac->CNIFAC),
-		                 'CbteDesde' => $regfac->CODFACD,
-	                     'CbteHasta' => $regfac->CODFACD,
+		                 'CbteDesde' => $regfac->CODFAC,
+	                     'CbteHasta' => $regfac->CODFAC,
 	                     'CbteFch' => date('Ymd',strtotime($regfac->FECFAC)),
 	                     'ImpTotal' => $regfac->TOTFAC,
 	                     'ImpTotConc' => 0, //$regfac['ImpTotConc'],

@@ -103,7 +103,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
     }
 
 
-    public function  __construct($id=null,$guid=false,$tipfac,$codfac,$fecfac,$cnofac,$totfac,$bas1fac,$iiva1fac)
+    public function  __construct($id=null,$guid=false,$tipfac,$codfac,$fecfac,$cnofac,$totfac,$bas1fac,$iiva1fac,$cnifac)
     {
         parent::__construct();
 		 $this->setTipFac($tipfac);
@@ -113,6 +113,7 @@ class Ftl_Factura extends Ftl_ClaseBase{
         $this->setTotFac($totfac);
         $this->setBas1Fac($bas1fac);
         $this->setIiva1Fac($iiva1fac);
+        $this->cnifac = $cnifac;
     }
 
 
