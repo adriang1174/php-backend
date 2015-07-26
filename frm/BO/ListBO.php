@@ -454,6 +454,8 @@ class Ftl_ListBO {
                     if(array_key_exists('show',$options))
                     	if($options['show'] == 'true')
                     		$html.= $this->parseDataColumn($field, $cols[$field]);
+                    else
+                    		$html.= $this->parseDataColumn($field, $cols[$field]);
                 }
 
                 
