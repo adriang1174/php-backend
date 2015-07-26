@@ -38,6 +38,7 @@ class WSAA {
   public function __construct($path = './', $service = 'wsfe') 
   {
     $this->path = $path;
+    var_dump($path);
     $this->service = $service;    
     
     // seteos en php
