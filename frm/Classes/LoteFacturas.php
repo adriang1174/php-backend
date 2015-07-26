@@ -135,12 +135,14 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			//print_r($cbtes);
 			$result = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
 			//Chequeo de Errores aqui
+			print_r($result);
 			
 			$this->assignCAE($result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE,$results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto);
+			
 			//$cae = $result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE;
 			//$caefvto = $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto;
 			
-			//print_r($cae);
+			print_r($this->fac);
 			
 			/*
 			$ws = new Ftl_WSAfip();
