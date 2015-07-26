@@ -39,7 +39,7 @@ class WSAA {
   {
     //$this->path = $path;
     $this->path = PATH_SITE;
-    var_dump($this->path);
+   
     $this->service = $service;    
     
     // seteos en php
@@ -51,8 +51,7 @@ class WSAA {
     if (!file_exists($this->path.self::WSDL)) $this->error .= " Failed to open ".self::WSDL;
     
     if(!empty($this->error)) {
-    	var_dump($this->path.self::CERT);
-      throw new Exception('WSAA class. Faltan archivos necesarios para el funcionamiento '.$this->error);
+      throw new Exception('WSAA class. Faltan archivos necesarios para el funcionamiento ');
     }
     
     $this->client = new SoapClient($this->path.self::WSDL, array(

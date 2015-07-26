@@ -44,7 +44,8 @@ class WSFE {
    */
   public function __construct($path = './') 
   {
-    $this->path = $path;
+    //$this->path = $path;
+    $this->path = PATH_SITE;
     
     // seteos en php
     ini_set("soap.wsdl_cache_enabled", "0");    
