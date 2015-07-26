@@ -13,7 +13,7 @@
     define('PATH_FRM', dirname(__FILE__) );
     define('PATH_JS', PATH_FRM . DS . 'js' . DS );
     define('PATH_TEMP', PATH_FRM . DS . 'temp' . DS );
-    define('PATH_SITE', PATH_FRM . DS . '..' . DS );
+    define('PATH_SITE', dirname(dirname(__FILE__)) . DS );
     define('PATH_ADMIN',PATH_FRM . DS . '..' . DS . 'admin' . DS );
 
     require_once PATH_FRM . DS . 'Log.php';
