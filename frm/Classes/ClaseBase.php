@@ -235,7 +235,6 @@ class Ftl_ClaseBase {
             $res[0]['total'] = $total;
         }
         self::getDB()->close();
-var_dump($res);
         return $res;
 
 

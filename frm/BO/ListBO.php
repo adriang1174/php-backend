@@ -425,7 +425,7 @@ class Ftl_ListBO {
 
         }
 
-        //var_dump($data);
+        var_dump($data);
         
         if ($data === NULL)
         {
