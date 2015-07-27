@@ -467,8 +467,7 @@ class Ftl_ListBO {
         }
 
         $html.= '</table></div>';
-        var_dump($html);
-
+        
         if ( $this->_opt [ 'showPager' ] !== false )
             $html .= $this->drawFooter();
 
