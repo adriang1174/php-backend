@@ -2,15 +2,15 @@
 
 class WSFE {
 
-  const CUIT = "20177397203";                 # CUIT del emisor de las facturas
+  const CUIT = $cuit;                 # CUIT del emisor de las facturas
   const TA =    "xmlgenerados/TA.xml";        # Archivo con el Token y Sign
   const WSDL = "wsfe.wsdl";                   # The WSDL corresponding to WSFE
-  const CERT = "keys/ghf.crt";                # The X.509 certificate in PEM format
-  const PRIVATEKEY = "keys/ghf.key";          # The private key correspoding to CERT (PEM)
+  const CERT = $cert;                # The X.509 certificate in PEM format
+  const PRIVATEKEY = $privatekey;          # The private key correspoding to CERT (PEM)
   const PASSPHRASE = "";                      # The passphrase (if any) to sign
   const PROXY_ENABLE = false;
   const LOG_XMLS = false;                     # For debugging purposes
-  const WSFEURL = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx"; // testing
+  const WSFEURL = $wsfeurl; // testing
   //const WSFEURL = "?????????????????"; // produccion  
 
   

@@ -24,8 +24,8 @@
     
     define('ENVIRONMENT',strtolower(Ftl_Environment::detect()));
 
-    require_once PATH_FRM . DS . 'Environment' . DS . 'Config-' . ENVIRONMENT . '.php';
-
+    //require_once PATH_FRM . DS . 'Environment' . DS . 'Config-' . ENVIRONMENT . '.php';
+	require_once PATH_FRM . DS . 'Environment' . DS . 'Config-development.php';
     
 
     $_GET       = Ftl_ArrayUtil::map( $_GET , 'stripslashes' );

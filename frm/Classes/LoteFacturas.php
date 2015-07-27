@@ -93,7 +93,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			
 			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
 			  if (!$wsaa->generar_TA()) {
-			    	 array_push($errors,'error al obtener el TA');
+			    	 array_push($errors,'Error al obtener el token auth de AFIP');
 			  }
 			} 
 			/**********************
@@ -134,31 +134,19 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 
 			//print_r($cbtes);
 			$result = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
-			//Chequeo de Errores aqui
-			print_r($result);
+			//Chequeo de Errores 
+			if(empty($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->Resultado))
+				  array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".print_r($result,true));
+			else
+				 if($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->Resultado != 'A')
+				 	 array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".print_r($result,true));
+				 else
+					 //Asigna el CAE a las Facturas
+					 $this->assignCAE($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAE,$result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAEFchVto);
 			
-			$this->assignCAE($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAE,$result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAEFchVto);
-			
-			//$cae = $result->FECAESolicitarResult->FeDetResp->FEDetResponse->CAE;
-			//$caefvto = $results->FECAESolicitarResult->FeDetResp->FEDetResponse->CAEFchVto;
 			
 			print_r($this->facs);
-			
-			/*
-			$ws = new Ftl_WSAfip();
-			$ws->CallWSAA("WSFEv1");
-			if ($ws->AuthOK())
-			{
-					$ws->prepareSolicitud($this->TIPFAC,$this->CODFACD,$this->CODFACH);
-					$ws->FECAESolicitar();
-					if($ws->solicitudOK())
-					{
-							$this->assignCAE($ws->getCAEs());
-							//$this->guardar();
-					}
-					//Manejar else de auth y solicitud
-			}
-			*/
+			return $errors;
 				
 	}
 	

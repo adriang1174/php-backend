@@ -385,8 +385,8 @@ class Ftl_ListBO {
 
 
 
-
-        $html = "<div id=\"table-content\"><table border=\"0\"   cellpadding=\"0\" cellspacing=\"0\" id=\"product-table\" class=\"ui-widget ui-widget-content ui-corner-all\">\n";
+	    $html = "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-gear\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>\n";
+        $html .= "<div id=\"table-content\"><table border=\"0\"   cellpadding=\"0\" cellspacing=\"0\" id=\"product-table\" class=\"ui-widget ui-widget-content ui-corner-all\">\n";
 
 
         if ( count ( $this->_opt[ 'fields' ] ) > 0 )
@@ -635,7 +635,7 @@ class Ftl_ListBO {
     {
         //$aux = "<tfoot><tr><td colspan=\"{$this->_numColumns}\" class=\"foot\">\n";
         $aux = "";
-		  $aux .= "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-gear\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>";
+		 // $aux .= "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-gear\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>";
         if ( $this->_opt['canExport'] || $this->_opt['canAdd'] || $this->_opt[ 'toggleAll' ] || $this->_opt[ 'canCAE' ] ){
             
             //$aux = "<div style=\"float: left;\"><a href=\"javascript:void(0);\" onclick=\"exportXLS();\"><img src=\"images/shared/btn_exportar.gif\"></a></div>";

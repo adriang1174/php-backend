@@ -3,6 +3,7 @@
 	require '../exceptionhandler.php';
 	require '../wsaa.class.php';
 	require '../wsfe.class.php';
+	require 'config.php';
 
     
     $page = new Ftl_PageBO();
@@ -32,7 +33,7 @@
       ),
         'fieldId'               => 'CODFAC',
         'canOrder'          => false,
-        'orderBy'           => 'TIPFAC|ASC,CODFAC|ASC',
+        'orderBy'           => 'TIPFAC|ASC,CODFAC|DESC',
 
         'canExport'         => false,
         'canCAE'            => true,      
@@ -50,8 +51,14 @@
 		//Antes de solicitar hay que validar lote
 		if($lote->validarLote())
 		{
-			$lote->solicitarAfip();    
-			$lote->guardar();
+			$errors = $lote->solicitarAfip();    
+			if(count($errors == 0)
+				$lote->guardar();
+			else
+			{
+				foreach($errors as $err1)	
+					$error .= $err1."\n";
+			}
 		}
 		else
 			$error = "Error. Verifique existan documentos previos con CAE generado";

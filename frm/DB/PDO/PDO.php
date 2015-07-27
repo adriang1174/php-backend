@@ -53,6 +53,11 @@ class Ftl_PDO extends Ftl_IDataBase{
             );
 
             $this->_link = new PDO( $dsn, DB_USER, DB_PASS,  $options);
+            ///Aqui modificar para MDB
+            //if(DB == 'msaccess')
+            	//$this->_link = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbname; Uid=; Pwd=;");
+            
+            
 
             if( is_null( $this->_link ) )
             {
