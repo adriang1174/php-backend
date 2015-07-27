@@ -97,7 +97,7 @@ class WSFE {
   public function openTA()
   {
     $this->TA = simplexml_load_file($this->path.self::TA);
-    print_r($this->ta);
+    //print_r($this->ta);
     return $this->TA == false ? false : true;
   }
   
