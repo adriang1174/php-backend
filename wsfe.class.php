@@ -2,15 +2,15 @@
 
 class WSFE {
 
-  const CUIT = $cuit;                 # CUIT del emisor de las facturas
+  const CUIT = C_CUIT;                 # CUIT del emisor de las facturas
   const TA =    "xmlgenerados/TA.xml";        # Archivo con el Token y Sign
   const WSDL = "wsfe.wsdl";                   # The WSDL corresponding to WSFE
-  const CERT = $cert;                # The X.509 certificate in PEM format
-  const PRIVATEKEY = $privatekey;          # The private key correspoding to CERT (PEM)
+  const CERT = C_CERT;                # The X.509 certificate in PEM format
+  const PRIVATEKEY = C_PRIVATEKEY;          # The private key correspoding to CERT (PEM)
   const PASSPHRASE = "";                      # The passphrase (if any) to sign
   const PROXY_ENABLE = false;
   const LOG_XMLS = false;                     # For debugging purposes
-  const WSFEURL = $wsfeurl; // testing
+  const WSFEURL = C_WSFEURL; // testing
   //const WSFEURL = "?????????????????"; // produccion  
 
   

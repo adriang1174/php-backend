@@ -1,10 +1,10 @@
 <?php
 
-$cuit = '20177397203';                  # CUIT del emisor de las facturas
-$cert = "keys/ghf.crt";                # The X.509 certificate in PEM format
-$privatekey = "keys/ghf.key";          # The private key correspoding to CERT (PEM)
-$wsfeurl = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx"; // testing
-$wsaaurl = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms"; // testing
+define("C_CUIT",     "20177397203");
+define("C_CERT",     "keys/ghf.crt");
+define("C_PRIVATEKEY",     "keys/ghf.key");
+define("C_WSFEURL",     "https://wswhomo.afip.gov.ar/wsfev1/service.asmx");
+define("C_WSAAURL",     "https://wsaahomo.afip.gov.ar/ws/services/LoginCms");
 $dbname = "C:/work/factura_electronica/0012015.mdb";
 define('DB', 'mysql');
 //define('DB', 'msaccess');

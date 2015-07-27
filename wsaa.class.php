@@ -4,11 +4,11 @@ class WSAA {
 
   const TA =    "xmlgenerados/TA.xml";         # Archivo con el Token y Sign
   const WSDL = "wsaa.wsdl";      # The WSDL corresponding to WSAA
-  const CERT = $cert;        # The X.509 certificate in PEM format
-  const PRIVATEKEY = $privatekey;  # The private key correspoding to CERT (PEM)
+  const CERT = C_CERT;        # The X.509 certificate in PEM format
+  const PRIVATEKEY = C_PROVATEKEY;  # The private key correspoding to CERT (PEM)
   const PASSPHRASE = "";         # The passphrase (if any) to sign
   const PROXY_ENABLE = false;
-  const URL = $wsaaurl;
+  const URL = C_WSAAURL;
   // CONST URL = "https://wsaa.afip.gov.ar/ws/services/LoginCms"; // produccion  
   
   /*

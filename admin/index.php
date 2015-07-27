@@ -52,7 +52,7 @@
 		if($lote->validarLote())
 		{
 			$errors = $lote->solicitarAfip();    
-			if(count($errors == 0)
+			if(count($errors == 0))
 				$lote->guardar();
 			else
 			{
