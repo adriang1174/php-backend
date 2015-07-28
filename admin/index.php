@@ -57,7 +57,7 @@
 			else
 			{
 				foreach($errors as $err1)	
-					$error .= str_replace("'",'',str_replace('"','',$err1))."\n";
+					$error .= preg_replace('/[^A-Za-z0-9\ -]/', '',$err1 )."\n";
 			}
 		}
 		else
