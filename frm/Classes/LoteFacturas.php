@@ -140,7 +140,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				  array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".print_r($result,true));
 			else
 				 if($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->Resultado != 'A')
-				 	 array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".$result->FECAESolicitarResult->Errors->Err->Msg)
+				 	 array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".$result->FECAESolicitarResult->Errors->Err->Msg);
 				 	 //print_r($result,true));
 				 else
 					 //Asigna el CAE a las Facturas

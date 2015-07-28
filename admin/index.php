@@ -63,7 +63,7 @@
 		else
 			$error = "Error. Verifique existan documentos previos con CAE generado";
     }
-    var_dump($error);
+    //var_dump($error);
     $error = substr($error,-100);
     $list = new Ftl_ListBO( $opciones );
     if(strlen($error) > 0)
