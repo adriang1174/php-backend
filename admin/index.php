@@ -65,7 +65,7 @@
     }
     var_dump($error);
     $list = new Ftl_ListBO( $opciones );
-    if($error != '')
+    if(strlen($error) > 0)
     	$list->showError($error);
     $page->showTop();
     $list->show();
