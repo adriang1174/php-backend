@@ -57,7 +57,7 @@
 			else
 			{
 				foreach($errors as $err1)	
-					$error .= $err1."\n";
+					$error .= str_replace("'",'',str_replace('"','',$err1))."\n";
 			}
 		}
 		else
