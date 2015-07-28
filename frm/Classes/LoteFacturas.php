@@ -147,6 +147,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			
 			
 			//print_r($this->facs);
+			print_r($errors);
 			return $errors;
 				
 	}
