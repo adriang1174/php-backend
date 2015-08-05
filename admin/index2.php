@@ -31,6 +31,7 @@ $tipocbte = 1;
 $cmp = $wsfe->recuperaLastCMP($ptovta, $tipocbte);
 //if($cmp == false) echo "erorrrrrrr cmppp";
 
-print_r($cmp);
+echo $cmp->FECompUltimoAutorizadoResult->CbteNro;
+//print_r($cmp);
 
 ?>
