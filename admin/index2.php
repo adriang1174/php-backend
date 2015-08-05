@@ -3,7 +3,7 @@
 	require '../exceptionhandler.php';
 	require '../wsaa.class.php';
 	require '../wsfe.class.php';
-	require 'config.php';
+	require 'config.php'; 
 
 
 $wsfe = new WSFE('./');
@@ -33,4 +33,4 @@ $cmp = $wsfe->recuperaLastCMP($ptovta, $tipocbte);
 
 print_r($cmp);
 
- ?>
+?>
