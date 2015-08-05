@@ -5,6 +5,17 @@
 	require '../wsfe.class.php';
 	require 'config.php'; 
 
+/**********************
+			 * WSAA
+			 * ********************/
+			$wsaa = new WSAA('./'); 
+			
+			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
+			  if (!$wsaa->generar_TA()) {
+			    	 array_push($errors,'Error al obtener el token auth de AFIP');
+			  }
+			} 
+
 
 $wsfe = new WSFE('./');
  
