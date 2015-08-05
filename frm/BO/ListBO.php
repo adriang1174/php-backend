@@ -386,7 +386,7 @@ class Ftl_ListBO {
 
 
 	    $html = "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-gear\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>\n";
-	    $html .= "<div style=\"margin-left: 20px;\"> Ultimo comprobante autorizado: ".$this->_opt[ 'ultnro' ]. "</div>
+	    $html .= "<div style=\"margin-left: 20px;\"> Ultimo comprobante autorizado: ".$this->_opt[ 'ultnro' ]. "</div>";
         $html .= "<div id=\"table-content\"><table border=\"0\"   cellpadding=\"0\" cellspacing=\"0\" id=\"product-table\" class=\"ui-widget ui-widget-content ui-corner-all\">\n";
 
 
