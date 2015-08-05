@@ -49,7 +49,7 @@
     //Si se aplico el filtro, entonces creamos el lote Factura, y verificamos Ult Comp
     if($io->get('TIPFAC','0') <> '0')
     {
-			$lote = new Ftl_LoteFacturas($io->get('TIPFAC','0'),$io->get('CODFACD',0),$io->get('CODFACH',999999));    
+			$lote = new Ftl_LoteFacturas($io->get('TIPFAC','0'),$io->get('CODFACD',$defaultValue ='0'),$io->get('CODFACH',$defaultValue ='999999'));    
 			$opciones['ultnro'] = $lote->getLastComp();
 		    if($io->get('solicitud','0') == '1')
 		    {
