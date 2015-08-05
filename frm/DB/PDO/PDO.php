@@ -204,7 +204,7 @@ class Ftl_PDO extends Ftl_IDataBase{
         }catch(Exception $e){
 
             $this->_stmt = null;
-            throw new Ftl_DB_DataBaseException($e->getMessage(), $e->getCode());
+            throw new Ftl_DB_DataBaseException($e->getMessage()." ".$sql, $e->getCode());
 
         }
 
