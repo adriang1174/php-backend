@@ -136,6 +136,8 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			$result = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
 			//print_r($result);
 			//Chequeo de Errores 
+			//Mejorar chequeo para multiples DetReponse
+			//FeCabResp->Resultado A o P, entonces mandar Arrar FECAEDetREsponse a assign CAE
 			if(empty($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->Resultado))
 				  array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".print_r($result,true));
 			else

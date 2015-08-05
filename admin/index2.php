@@ -3,6 +3,7 @@
 	require '../exceptionhandler.php';
 	require '../wsaa.class.php';
 	require '../wsfe.class.php';
+	require 'config.php';
 
 
 $wsfe = new WSFE('./');
