@@ -45,24 +45,31 @@
     $io = new Ftl_IOHelper();
     $io->addFromArray($_REQUEST);
     $error ="";
-    if($io->get('solicitud','0') == '1')
+    
+    //Si se aplico el filtro, entonces creamos el lote Factura, y verificamos Ult Comp
+    if($io->get('TIPFAC','0') <> '0')
     {
-		$lote = new Ftl_LoteFacturas($io->get('TIPFAC','0'),$io->get('CODFACD','0'),$io->get('CODFACH','0'));
-		//Antes de solicitar hay que validar lote
-		if($lote->validarLote())
-		{
-			$errors = $lote->solicitarAfip();    
-			if(count($errors) == 0)
-				$lote->guardar();
-			else
-			{
-				foreach($errors as $err1)	
-					$error .= str_replace("\n",'',preg_replace('/[^A-Za-z0-9\ -]/', '',$err1 ));
-			}
-		}
-		else
-			$error = "Error. Verifique existan documentos previos con CAE generado";
-    }
+			$lote = new Ftl_LoteFacturas($io->get('TIPFAC','0'),$io->get('CODFACD','0'),$io->get('CODFACH','0'));    
+			$opciones['ultnro'] = $lote->getLastComp();
+		    if($io->get('solicitud','0') == '1')
+		    {
+		
+				//Antes de solicitar hay que validar lote
+				if($lote->validarLote())
+				{
+					$errors = $lote->solicitarAfip();    
+					if(count($errors) == 0)
+						$lote->guardar();
+					else
+					{
+						foreach($errors as $err1)	
+							$error .= str_replace("\n",'',preg_replace('/[^A-Za-z0-9\ -]/', '',$err1 ));
+					}
+				}
+				else
+					$error = "Error. Verifique existan documentos previos con CAE generado";
+		    }
+	}
     //var_dump($error);
     $list = new Ftl_ListBO( $opciones );
     if(strlen($error) > 0)

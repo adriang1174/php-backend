@@ -81,6 +81,40 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 					return true;
 	}
 
+public function getLastComp()
+	{
+			$errors = array();
+			$cbtes = array();
+			/**********************
+			 * WSAA
+			 * ********************/
+			$wsaa = new WSAA('./'); 
+			
+			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
+			  if (!$wsaa->generar_TA()) {
+			    	 array_push($errors,'Error al obtener el token auth de AFIP');
+			  }
+			} 
+			/**********************
+			 * WSFE
+			 * ********************
+			 */
+			$wsfe = new WSFE('./');
+			// Carga el archivo TA.xml
+			if(!$wsfe->openTA())
+				array_push($errors,"WSFE open TA Error");
+	
+			$ptovta = C_PTOVTA; 
+			$tipocbte = $this->getTipFac();
+			
+			$cmp = $wsfe->recuperaLastCMP($ptovta, $tipocbte);
+			
+			if($cmp == false) 
+				return "Error retornando Ult. Nro.";
+			else
+				return $cmp->FECompUltimoAutorizadoResult->CbteNro;	
+	}
+	
 	public function solicitarAfip()
 	{
 			
@@ -133,7 +167,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			    }
 
 			//print_r($cbtes);
-			$result = $wsfe->aut( count($cbtes), 1, 1, $cbtes);
+			$result = $wsfe->aut( count($cbtes), 1, C_PTOVTA, $cbtes);
 			//print_r($result);
 			//Chequeo de Errores 
 			//Mejorar chequeo para multiples DetReponse
