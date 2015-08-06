@@ -59,7 +59,7 @@
 				//Antes de solicitar hay que validar lote
 				if($lote->validarLote())
 				{
-					$errors = $lote->solicitarAfip();    
+					$errors = $lote->solicitarAfip();  
 					if(count($errors) == 0)
 						$lote->guardar();
 					else
@@ -67,6 +67,7 @@
 						foreach($errors as $err1)	
 							$error .= str_replace("\n",'',preg_replace('/[^A-Za-z0-9\ -]/', '',$err1 ));
 					}
+					$opciones['ultnro'] = $lote->getLastComp();
 				}
 				else
 					$error = "Error. Verifique existan documentos previos con CAE generado";
