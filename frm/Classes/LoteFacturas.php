@@ -125,7 +125,7 @@ public function getLastComp()
 			 * ********************/
 			$wsaa = new WSAA('./'); 
 			
-			if($wsaa->get_expiration() < date("Y-m-d h:i:s")) {
+			if($wsaa->get_expiration() < date("Y-m-d H:i:s")) {
 			  if (!$wsaa->generar_TA()) {
 			    	 array_push($errors,'Error al obtener el token auth de AFIP');
 			  }
@@ -168,19 +168,19 @@ public function getLastComp()
 
 			//print_r($cbtes);
 			$result = $wsfe->aut( count($cbtes), 1, C_PTOVTA, $cbtes);
-			//print_r($result);
+			print_r($result);
 			//Chequeo de Errores 
 			//Mejorar chequeo para multiples DetReponse
 			//FeCabResp->Resultado A o P, entonces mandar Arrar FECAEDetREsponse a assign CAE
-			if(empty($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->Resultado))
+			if(empty($result->FECAESolicitarResult->FeCabResp->Resultado))
 				  array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".print_r($result,true));
 			else
-				 if($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->Resultado != 'A')
+				 if($result->FECAESolicitarResult->FeCabResp->Resultado != 'A' and $result->FECAESolicitarResult->FeCabResp->Resultado != 'P')
 				 	 array_push($errors, "Han ocurrido errores al autorizar el comprobante en AFIP: ".str_replace("\n",'',preg_replace('/[^A-Za-z0-9\ -]/', '',$result->FECAESolicitarResult->Errors->Err->Msg)));
 				 	 //print_r($result,true));
 				 else
 					 //Asigna el CAE a las Facturas
-					 $this->assignCAE($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAE,$result->FECAESolicitarResult->FeDetResp->FECAEDetResponse->CAEFchVto);
+					 $this->assignCAE($result->FECAESolicitarResult->FeDetResp->FECAEDetResponse);
 			
 			
 			//print_r($this->facs);
@@ -189,10 +189,28 @@ public function getLastComp()
 				
 	}
 	
-	public function assignCAE($cae,$caefvto)
+	public function assignCAE($fecaedetresponse)
 	{
-				foreach($this->facs as $fac)
+				
+				foreach($this->facs as &$fac)
 				{
+						if(is_array($fecaedetresponse))
+						{
+							foreach($fecaedetresponse as $r)
+							{
+									if($r->CbteDesde == $fac->CODFAC and $r->Resultado == 'A')
+									{
+										$cae = $r->CAE;
+										$caefvto = $r->CAEFchVto; 	
+									}
+							}
+						}
+						else
+						{
+							$cae = $fecaedetresponse->CAE;
+							$caefvto = $fecaedetresponse->CAEFchVto;
+						}
+						
 						$fac->setObs1Fac($cae);
 						$fac->setObs2Fac($caefvto);						
 				}
