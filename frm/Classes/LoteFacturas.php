@@ -168,7 +168,7 @@ public function getLastComp()
 
 			//print_r($cbtes);
 			$result = $wsfe->aut( count($cbtes), 1, C_PTOVTA, $cbtes);
-			print_r($result);
+			//print_r($result);
 			//Chequeo de Errores 
 			//Mejorar chequeo para multiples DetReponse
 			//FeCabResp->Resultado A o P, entonces mandar Arrar FECAEDetREsponse a assign CAE
