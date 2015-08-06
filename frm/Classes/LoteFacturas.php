@@ -90,7 +90,7 @@ public function getLastComp()
 			 * ********************/
 			$wsaa = new WSAA('./'); 
 			
-			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
+			if($wsaa->get_expiration() < date("Y-m-d H:i:s")) {
 			  if (!$wsaa->generar_TA()) {
 			    	 array_push($errors,'Error al obtener el token auth de AFIP');
 			  }
@@ -125,7 +125,7 @@ public function getLastComp()
 			 * ********************/
 			$wsaa = new WSAA('./'); 
 			
-			if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
+			if($wsaa->get_expiration() < date("Y-m-d h:i:s")) {
 			  if (!$wsaa->generar_TA()) {
 			    	 array_push($errors,'Error al obtener el token auth de AFIP');
 			  }

@@ -177,8 +177,8 @@ class WSAA {
     } else {
       $r = $this->TA['header']['expirationTime'];
     }
-     
-    return $r;
+    $exp_time = str_replace("T"," ",substr($r,0,19)); 
+    return $exp_time;
   }
    
 }
