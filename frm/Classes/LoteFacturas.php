@@ -120,7 +120,7 @@ public function getLastComp()
 				$tipo_cbte = '7';
 			
 			$cmp = $wsfe->recuperaLastCMP($ptovta, $tipo_cbte);
-			print_r($cmp);
+			//print_r($cmp);
 			if($cmp == false) 
 				return "Error retornando Ult. Nro.";
 			else
