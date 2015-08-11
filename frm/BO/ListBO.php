@@ -387,7 +387,7 @@ class Ftl_ListBO {
 
 	    
 	    $html = "<div style=\"margin-left: 150px; font-size:14px;\"> Ultimo comprobante autorizado: ".$this->_opt[ 'ultnro' ]. "</div>";
-        $html .= "<span class=\"ui-filter-title\">Resultado de la búsqueda:</span>"
+        $html .= "<span class=\"ui-filter-title\">Resultado de la búsqueda:</span>";
         $html .= "<div id=\"table-content\"><table border=\"0\"   cellpadding=\"0\" cellspacing=\"0\" id=\"product-table\" class=\"ui-widget ui-widget-content ui-corner-all\">\n";
 
 
