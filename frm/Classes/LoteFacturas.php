@@ -105,9 +105,21 @@ public function getLastComp()
 				array_push($errors,"WSFE open TA Error");
 	
 			$ptovta = C_PTOVTA; 
-			$tipocbte = $this->getTipFac();
+			//$tipocbte = $this->getTipFac();
+			if($this->TIPFAC == '1')
+				$tipo_cbte = '1';
+			if($this->TIPFAC == '9')
+				$tipo_cbte = '6';
+			if($this->TIPFAC == '2')
+				$tipo_cbte = '3';
+			if($this->TIPFAC == '3')
+				$tipo_cbte = '8';
+			if($this->TIPFAC == '5')
+				$tipo_cbte = '2';
+			if($this->TIPFAC == '6')
+				$tipo_cbte = '7';
 			
-			$cmp = $wsfe->recuperaLastCMP($ptovta, $tipocbte);
+			$cmp = $wsfe->recuperaLastCMP($ptovta, $tipo_cbte);
 			
 			if($cmp == false) 
 				return "Error retornando Ult. Nro.";
@@ -167,7 +179,19 @@ public function getLastComp()
 			    }
 
 			//print_r($cbtes);
-			$result = $wsfe->aut( count($cbtes), 1, C_PTOVTA, $cbtes);
+			if($this->TIPFAC == '1')
+				$tipo_cbte = '1';
+			if($this->TIPFAC == '9')
+				$tipo_cbte = '6';
+			if($this->TIPFAC == '2')
+				$tipo_cbte = '3';
+			if($this->TIPFAC == '3')
+				$tipo_cbte = '8';
+			if($this->TIPFAC == '5')
+				$tipo_cbte = '2';
+			if($this->TIPFAC == '6')
+				$tipo_cbte = '7';
+			$result = $wsfe->aut( count($cbtes), $tipo_cbte, C_PTOVTA, $cbtes);
 			//print_r($result);
 			//Chequeo de Errores 
 			//Mejorar chequeo para multiples DetReponse

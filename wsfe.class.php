@@ -122,14 +122,14 @@ class WSFE {
   /*
    * Retorna el ultimo comprobante autorizado para el tipo de comprobante /cuit / punto de venta ingresado.
    */ 
-  public function recuperaLastCMP ($ptovta)
+  public function recuperaLastCMP ($ptovta,$cbtetipo)
   {
     $results = $this->client->FECompUltimoAutorizado(
      array('Auth' =>  array('Token'    => $this->TA->credentials->token,
                                 'Sign'     => $this->TA->credentials->sign,
                                 'Cuit'     => self::CUIT),
              'PtoVta'   => $ptovta,
-             'CbteTipo' => $this->tipo_cbte));
+             'CbteTipo' => $cbtetipo));
 
     //var_dump($results);
     //$e = $this->_checkErrors($results, 'FECompUltimoAutorizado');

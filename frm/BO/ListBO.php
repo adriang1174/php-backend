@@ -385,8 +385,9 @@ class Ftl_ListBO {
 
 
 
-	    $html = "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-gear\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>\n";
-	    $html .= "<div style=\"margin-left: 150px;\"> Ultimo comprobante autorizado: ".$this->_opt[ 'ultnro' ]. "</div>";
+	    
+	    $html = "<div style=\"margin-left: 150px; font-size:14px;\"> Ultimo comprobante autorizado: ".$this->_opt[ 'ultnro' ]. "</div>";
+        $html .= "<span class=\"ui-filter-title\">Resultado de la búsqueda:</span>"
         $html .= "<div id=\"table-content\"><table border=\"0\"   cellpadding=\"0\" cellspacing=\"0\" id=\"product-table\" class=\"ui-widget ui-widget-content ui-corner-all\">\n";
 
 
@@ -471,6 +472,9 @@ class Ftl_ListBO {
         
         if ( $this->_opt [ 'showPager' ] !== false )
             $html .= $this->drawFooter();
+
+
+		$html .= "<div class=\"solicita\"><button class=\"ui-button\" id=\"btnCAE\" ui-icon=\"ui-icon-gear\" onclick=\"solicitarCAE();\">Solicitar CAE</button></div><div class=\"clear\"></div></div></div>\n";
 
         echo "<form id=\"mainform\" name=\"mainform\" method=\"GET\" action=\"". Ftl_Path::getFileName() . ($this->_numfilters > 0 ? '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, implode(',',$this->_filtersNames),false) : "") . "\">\n";
         if ($this->_numfilters > 0){
