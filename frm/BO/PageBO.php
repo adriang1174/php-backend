@@ -4,7 +4,8 @@ class Ftl_PageBO {
     private $scripts            = "fgmenu,fancybox,jqueryui,";
     private $jsController       = array();
     private $title              = "";
-    private $session            = null;
+    private $status             = "WS AFIP Status: ";
+	private $session            = null;
    // private $showMyAccountMenu  = true;
     private $showMenu           = true;
     private $showHeader         = true;
@@ -31,6 +32,11 @@ class Ftl_PageBO {
 
     }
 
+    public function setStatus($status){
+        $this->status .= $status;
+
+    }
+	
     public function loadSripts($scripts){
         $this->scripts .= $scripts;
     }

@@ -212,7 +212,7 @@ class Ftl_ClaseBase {
 
     
     
-    public static function _obtenerListadoPaginado ($campos="*",$from,$pagina=1,$reg_x_pagina=50,$filtros=null,$orden=null)
+    public static function _obtenerListadoPaginado ($campos="*",$from,$pagina=1,$reg_x_pagina=500,$filtros=null,$orden=null)
     {
         $res = null;
 
@@ -222,18 +222,24 @@ class Ftl_ClaseBase {
         $sqlWhere   = ($filtros) ? "WHERE " . $filtros : "";
         $sqlOrder   = ($orden) ? " ORDER BY $orden" : "";
 
-        $sql = "SELECT SQL_CALC_FOUND_ROWS $campos
+        $sql = "SELECT $campos
                 FROM " . $from . "
                 $sqlWhere
                 $sqlOrder
-                LIMIT {$limit},{$offset};";
-        
+                ;";
+        $sql = str_replace("''","'",$sql);
+		//var_dump($sql);
+		
        $res = self::getDB()->fetchAllAssoc($sql);
 
-        $total = self::getDB()->getFoundRows();
+        /*$total = self::getDB()->getFoundRows();
         if ($res != null){
             $res[0]['total'] = $total;
         }
+		*/
+		//print_r($res);
+		$total = count($res);
+		$res[0]['total'] = $total;
         self::getDB()->close();
         return $res;
 

@@ -13,9 +13,10 @@ $titulo         = "";
 <div class="nav-outer-repeat ui-widget-header ui-helper-clearfix">
 <!--  start nav-outer -->
 <div class="nav-outer ">
-    <div id="nav-left">
+    <div id="nav-left" class="ui-widget">
                 <?php
-                    if ($this->showMenu){?>
+                    echo $this->status;    
+					if ($this->showMenu){?>
                         <a tabindex="0" href="javascript:void(0);" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="flyout"><span class="ui-icon ui-icon-triangle-1-s"></span>Menu</a>
                 <?php
                     }?>        
@@ -25,7 +26,7 @@ $titulo         = "";
 		<div id="nav-right" class="ui-widget">
 <?php
     $user = (isset($this->session) ? $this->session->getUser() : null);
-    
+ //echo $this->status;    
 ?>
                         <!--div class="nav-divider">&nbsp;</div-->
 		<!--	<a href="logout.php" id="logout">Logout</a> -->

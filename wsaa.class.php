@@ -51,9 +51,8 @@ class WSAA {
     if (!file_exists($this->path.self::WSDL)) $this->error .= " Failed to open ".self::WSDL;
     
     if(!empty($this->error)) {
-      throw new Exception('WSAA class. Faltan archivos necesarios para el funcionamiento ');
+      throw new Exception('WSAA class. Faltan archivos necesarios para el funcionamiento '.$this->error.$this->path.self::CERT);
     }
-    
     $this->client = new SoapClient($this->path.self::WSDL, array(
               'soap_version'   => SOAP_1_2,
               'location'       => self::URL,

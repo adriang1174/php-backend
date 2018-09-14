@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><loginCmsResponse xmlns="http://wsaa.view.sua.dvadac.desein.afip.gov"><loginCmsReturn>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;loginTicketResponse version=&quot;1&quot;&gt;
+    &lt;header&gt;
+        &lt;source&gt;CN=wsaa, O=AFIP, C=AR, SERIALNUMBER=CUIT 33693450239&lt;/source&gt;
+        &lt;destination&gt;C=ar, O=nestor_daniel_belli, SERIALNUMBER=CUIT 20177397203, CN=sbargentina&lt;/destination&gt;
+        &lt;uniqueId&gt;2308027929&lt;/uniqueId&gt;
+        &lt;generationTime&gt;2018-09-11T10:07:35.504-03:00&lt;/generationTime&gt;
+        &lt;expirationTime&gt;2018-09-11T22:07:35.504-03:00&lt;/expirationTime&gt;
+    &lt;/header&gt;
+    &lt;credentials&gt;
+        &lt;token&gt;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pgo8c3NvIHZlcnNpb249IjIuMCI+CiAgICA8aWQgc3JjPSJDTj13c2FhLCBPPUFGSVAsIEM9QVIsIFNFUklBTE5VTUJFUj1DVUlUIDMzNjkzNDUwMjM5IiBkc3Q9IkNOPXdzZmUsIE89QUZJUCwgQz1BUiIgdW5pcXVlX2lkPSIzMzIzMDQyOTM1IiBnZW5fdGltZT0iMTUzNjY3MTE5NSIgZXhwX3RpbWU9IjE1MzY3MTQ0NTUiLz4KICAgIDxvcGVyYXRpb24gdHlwZT0ibG9naW4iIHZhbHVlPSJncmFudGVkIj4KICAgICAgICA8bG9naW4gZW50aXR5PSIzMzY5MzQ1MDIzOSIgc2VydmljZT0id3NmZSIgdWlkPSJDPWFyLCBPPW5lc3Rvcl9kYW5pZWxfYmVsbGksIFNFUklBTE5VTUJFUj1DVUlUIDIwMTc3Mzk3MjAzLCBDTj1zYmFyZ2VudGluYSIgYXV0aG1ldGhvZD0iY21zIiByZWdtZXRob2Q9IjIyIj4KICAgICAgICAgICAgPHJlbGF0aW9ucz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjIwMTc3Mzk3MjAzIiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgIDwvcmVsYXRpb25zPgogICAgICAgIDwvbG9naW4+CiAgICA8L29wZXJhdGlvbj4KPC9zc28+Cg==&lt;/token&gt;
+        &lt;sign&gt;K51sY0X73/oe8z+kV+pZxPnvmT9pOVdcpzzbTbWavMSlXZNC66gFSC23FfvOzz+vlTx7WtCYHAnSXUCCSq+dNBG5mfvHv2gVnsIaznIRHa+mEc/i/WA+pTt6yAKtsrxBJfcQDsn3ffFNb5ZurAQ0zlD5zOpU4FPK88TA13TXLzo=&lt;/sign&gt;
+    &lt;/credentials&gt;
+&lt;/loginTicketResponse&gt;
+</loginCmsReturn></loginCmsResponse></soapenv:Body></soapenv:Envelope>

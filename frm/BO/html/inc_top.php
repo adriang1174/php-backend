@@ -34,7 +34,7 @@ if (!isset($_REQUEST['export']) || (isset($_REQUEST['export']) && $_REQUEST['exp
 <![endif]-->
 
 <!-- Custom jquery scripts -->
-<!--<script src="<?php echo URL_ROOT . "admin/" ;?>js/jquery/custom_jquery.js" type="text/javascript"></script>-->
+<script src="<?php echo URL_ROOT . "admin/" ;?>js/jquery/custom_jquery.js" type="text/javascript"></script>
 
 <script src="<?php echo URL_ROOT . "admin/" ;?>js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
 <script type="text/javascript">

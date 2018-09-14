@@ -163,7 +163,9 @@ abstract class Ftl_IDataBase {
 //        public function getGuid();
 //
         public function getFoundRows() {
-		return $this->fetchVal( 'SELECT FOUND_ROWS()' );
+		//return $this->fetchVal( 'SELECT FOUND_ROWS()' );
+		//return $this->_stmt->rowCount();
+            return $this->_affectedRows;		
 	}
 //
 //
@@ -256,10 +258,14 @@ abstract class Ftl_IDataBase {
             $sql = "UPDATE $table SET ";
 
             $fields = array();
-
+			
             foreach($data as $k=>$v)
             {
-                $fields[] = $k . ' = ' . $this->escape($v);
+                //$fields[] = $k . ' = ' . $this->escape($v);
+				if (!is_string($v))
+					$fields[] = $k . ' = ' . $v;
+				else
+					$fields[] = $k . " = '" . $v . "'";					
             }
 
             $sql .= implode (',',$fields);
@@ -268,7 +274,8 @@ abstract class Ftl_IDataBase {
             {
                 $sql .= " WHERE " . str_ireplace("where", "", $where);
             }
-
+			
+			//var_dump($sql);
             return $this->execute( $sql );
 
 
