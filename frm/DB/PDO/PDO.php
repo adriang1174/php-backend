@@ -39,26 +39,32 @@ class Ftl_PDO extends Ftl_IDataBase{
                     return true;
             }
 
-            $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_BASE;
+            //$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_BASE;
 
-            $options = array (
+            //$options = array (
 
                 //PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-                1000 => true,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                1002 => "SET NAMES " . DB_CHARSET
+            //    1000 => true,
+            //    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+             //   1002 => "SET NAMES " . DB_CHARSET
                 
 
                 
-            );
+            //);
 
-            $this->_link = new PDO( $dsn, DB_USER, DB_PASS,  $options);
+            //echo "Before connect";
+			//$dbname = "C:/work/factura_electronica/0012015.mdb";
+			//var_dump(DBNAME);
+			//$this->_link = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ={DBNAME}; Uid=; Pwd=;");
             ///Aqui modificar para MDB
             //if(DB == 'msaccess')
-            	//$this->_link = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbname; Uid=; Pwd=;");
-            
-            
-
+            //	$this->_link = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ={$dbname}; Uid=; Pwd=;");
+			//else
+			//	$this->_link = new PDO( $dsn, DB_USER, DB_PASS,  $options);
+			//var_dump($this->_link);
+            //$this->_link = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=C:\\Users\\Servidor\\Desktop\\0012016.MDB; Uid=; Pwd=;");
+            $this->_link = new PDO(DBNAME);
+			//var_dump($this->_link);
             if( is_null( $this->_link ) )
             {
                 throw new Ftl_DB_DataBaseException( "No se pudo realizar la conección con la BBDD", -2 );
@@ -194,17 +200,26 @@ class Ftl_PDO extends Ftl_IDataBase{
             }
 
             //Si me llegan datos en $data, los escapeo y los reemplazo en el $sql
+//			var_dump($sql);
             $sql = $this->getEscapedQuery( $sql, $data );
-
+//var_dump($this->_link);
+//var_dump($sql);
             $this->_stmt = $this->_link->query( $sql );
-            $this->_affectedRows = $this->_stmt->rowCount();
-
+//var_dump($this->_stmt);
+//var_dump($sql);
+//$result = $this->_link->query($sql);
+//$row = $result->fetch();
+           //$this->_affectedRows = $this->_stmt->rowCount();
+//$row = $this->_stmt->fetchAll(PDO::FETCH_ASSOC);
+ 
+ //var_dump($row);
             return $this->_stmt;
         
         }catch(Exception $e){
 
             $this->_stmt = null;
-            throw new Ftl_DB_DataBaseException($e->getMessage()." ".$sql, $e->getCode());
+			//var_dump($e);
+			throw new Ftl_DB_DataBaseException($e->getMessage()." ".$sql, $e->getCode());
 
         }
 
@@ -316,13 +331,15 @@ class Ftl_PDO extends Ftl_IDataBase{
     protected function fetchAllMode   ( $sql=null, $data=null, $mode = Ftl_DB::FETCH_ASSOC )
     {
 
-        if (  isset( $sql )  )
+        //var_dump($sql);
+		if (  isset( $sql )  )
         {
                 $this->query( $sql, $data );
         }
 
-        if ( is_null ($this->_stmt ) || $this->_stmt->columnCount() < 1 ){
-                return array();
+        //if ( is_null ($this->_stmt ) || $this->_stmt->columnCount() < 1 ){
+        if ( is_null ($this->_stmt )  ){        
+			return array();
         }
 
         $data = array();
@@ -331,8 +348,10 @@ class Ftl_PDO extends Ftl_IDataBase{
         {
             case Ftl_DB::FETCH_ASSOC:
 
-                $data = $this->_stmt->fetchAll( PDO::FETCH_ASSOC );
-
+                //var_dump($this->_stmt);
+				$data = $this->_stmt->fetchAll( PDO::FETCH_ASSOC );
+				//var_dump($data);
+				//$data = $this->_stmt->fetch();
                 break;
             case Ftl_DB::FETCH_NUM:
 
@@ -365,8 +384,9 @@ class Ftl_PDO extends Ftl_IDataBase{
                 $this->query( $sql, $data );
         }
 
-        if ( is_null ($this->_stmt ) || $this->_stmt->columnCount() < 1 ){
-                return array();
+        //if ( is_null ($this->_stmt ) || $this->_stmt->columnCount() < 1 ){
+		if ( is_null ($this->_stmt ) ){
+			return array();
         }
 
         $data = array();
@@ -381,9 +401,9 @@ class Ftl_PDO extends Ftl_IDataBase{
 
             case Ftl_DB::FETCH_NUM:
 
-                if ($col > -1)
-                    $data = $this->_stmt->fetchColumn( $col );
-                else
+                //if ($col > -1)
+                  //  $data = $this->_stmt->fetchColumn( $col );
+                //else
                     $data = $this->_stmt->fetch( PDO::FETCH_NUM );
 
                 break;
@@ -419,7 +439,7 @@ class Ftl_PDO extends Ftl_IDataBase{
     /*CLEAN AND ESCAPE*/
     public function escape( $data = null )
     {
-
+//var_dump($data);
             if ( is_null( $data ) )
             {
                 return 'NULL';
@@ -455,7 +475,6 @@ class Ftl_PDO extends Ftl_IDataBase{
             foreach( $data as $k => $v ) {
                     $ret[ $k ] = $this->escape( $v );
             }
-
             return $ret;
 
     }

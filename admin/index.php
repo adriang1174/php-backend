@@ -7,8 +7,17 @@
 
     
     $page = new Ftl_PageBO();
-    $page->setTitle("Facturas a emitir");
-    $page->loadSripts("tooltip,form,checkbox");
+	$wsfe = new WSFE('./');
+	$r = $wsfe->getStatus();
+	$page->setTitle("Facturas a emitir");
+	//$r->FEDummyResult->AppServer
+	$stat_app = ($r->FEDummyResult->AppServer == "OK")?"<font color=\"#00DD22\">".$r->FEDummyResult->AppServer."</font>":"<font color=\"#FF0000\">".$r->FEDummyResult->AppServer."</font>";
+	$stat_db = ($r->FEDummyResult->DbServer == "OK")?"<font color=\"#00DD22\">".$r->FEDummyResult->DbServer."</font>":"<font color=\"#FF0000\">".$r->FEDummyResult->DbServer."</font>";
+	$stat_auth = ($r->FEDummyResult->AuthServer == "OK")?"<font color=\"#00DD22\">".$r->FEDummyResult->AuthServer."</font>":"<font color=\"#FF0000\">".$r->FEDummyResult->AuthServer."</font>";
+	$status = "Servidor de Aplicaciones = ". $stat_app." | Servidor de base de datos: ".$stat_db." | Servidor de autenticaci&oacute;n: ".$stat_auth ;
+	//.", DbServer = ".$r->FEDummyResult->DBServer.", AuthServer = ".$r->FEDummyResult->AuthServer
+    $page->setStatus($status);
+	$page->loadSripts("tooltip,form,checkbox");
     $page->showMenu( false);
     //$page->checkSession();
     $opciones = array (
@@ -19,17 +28,18 @@
         ),
         'table'             => 'F_FAC',
         'fields'            => array (
-            'TIPFAC'  			=> array('title'=>'Tipo doc','type'=>'assoc','filter'=>true,'data'=>array('1' => 'FA','9'=>'FB','2'=>'NCA','3'=>'NCB','5'=>'NDA','6'=>'NDB')),            
+            'TIPFAC'  			=> array('title'=>'Tipo doc','type'=>'assoc','filter'=>true,'data'=>array('\'1\'' => 'FA','\'9\''=>'FB','\'2\''=>'NCA','\'3\''=>'NCB','\'5\''=>'NDA','\'6\''=>'NDB','\'7\''=>'FM','\'77\''=>'NCM','\'777\''=>'NDM')),            
             'CODFAC'  			=> array('title'=>'Número','filter'=>false),            
-            'CODFACD'  			=> array('title'=>'Número Desde','filter'=>true,'show'=>false),            
-            'CODFACH'  			=> array('title'=>'Número Hasta','filter'=>true,'show'=>false),                  
+            'CODFACD'  			=> array('title'=>'Número Desde','type'=>'int','filter'=>true,'show'=>false),            
+            'CODFACH'  			=> array('title'=>'Número Hasta','type'=>'int','filter'=>true,'show'=>false),                  
             'FECFAC'			=> array('title'=>'Fecha','filter'=>false),            
             'CNOFAC'				=> array('title'=>'Cliente','filter'=>false),     
 			   'BAS1FAC'			=> array('title'=>'Neto s/IVA','filter'=>false),
 			   'IIVA1FAC'			=> array('title'=>'IVA','filter'=>false) ,
             'TOTFAC'			=> array('title'=>'Total','filter'=>false),      
-            'OB1FAC'			=> array('title'=>'CAE'),   
+            'BNOFAC'			=> array('title'=>'CAE'),   
             'OB2FAC'			=> array('title'=>'F. Vto. CAE'),         
+			'OB1FAC'			=> array('title'=>'Cod. Barras'),
       ),
         'fieldId'               => 'CODFAC',
         'canOrder'          => false,
@@ -38,7 +48,7 @@
         'canExport'         => false,
         'canCAE'            => true,      
         
-		  'showActions'       => false,
+		  'showActions'       => true,
         'resPerPage'        => 100
     );
 
@@ -73,7 +83,7 @@
 					$error = "Error. Verifique existan documentos previos con CAE generado";
 		    }
 	}
-    //var_dump($error);
+
     $list = new Ftl_ListBO( $opciones );
     if(strlen($error) > 0)
     {

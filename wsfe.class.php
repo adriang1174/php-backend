@@ -3,13 +3,13 @@
 class WSFE {
 
   const CUIT = C_CUIT;                 # CUIT del emisor de las facturas
-  const TA =    "xmlgenerados/TA.xml";        # Archivo con el Token y Sign
+  const TA =    "xmlgenerados\TA.xml";        # Archivo con el Token y Sign
   const WSDL = "wsfe.wsdl";                   # The WSDL corresponding to WSFE
   const CERT = C_CERT;                # The X.509 certificate in PEM format
   const PRIVATEKEY = C_PRIVATEKEY;          # The private key correspoding to CERT (PEM)
   const PASSPHRASE = "";                      # The passphrase (if any) to sign
   const PROXY_ENABLE = false;
-  const LOG_XMLS = false;                     # For debugging purposes
+  const LOG_XMLS = true;                     # For debugging purposes
   const WSFEURL = C_WSFEURL; // testing
   //const WSFEURL = "?????????????????"; // produccion  
 
@@ -108,7 +108,8 @@ class WSFE {
   public function recuperaQTY()
   {
     $results = $this->client->FECompTotXRequest(
-      array('Auth'=>array('Token' => $this->TA->credentials->token,
+
+	array('Auth'=>array('Token' => $this->TA->credentials->token,
                               'Sign' => $this->TA->credentials->sign,
                               'Cuit' => self::CUIT)));
     
@@ -124,7 +125,7 @@ class WSFE {
    */ 
   public function recuperaLastCMP ($ptovta,$cbtetipo)
   {
-    $results = $this->client->FECompUltimoAutorizado(
+  $results = $this->client->FECompUltimoAutorizado(
      array('Auth' =>  array('Token'    => $this->TA->credentials->token,
                                 'Sign'     => $this->TA->credentials->sign,
                                 'Cuit'     => self::CUIT),
@@ -166,6 +167,22 @@ class WSFE {
     //this->_checkErrors($results, 'FEParamGetTiposDoc');
     print_r($results);
     //fclose($fh);
+  }
+
+    /*
+   * Obtiene los tipos de Comprobante
+   */
+  public function getStatus()
+  {
+    $params->Auth->Token = $this->TA->credentials->token;
+    $params->Auth->Sign = $this->TA->credentials->sign;
+    $params->Auth->Cuit = self::CUIT;
+    $results = $this->client->FEDummy($params);
+    
+    //this->_checkErrors($results, 'FEParamGetTiposDoc');
+    //print_r($results);
+    //fclose($fh);
+	return $results;
   }
 
   /*
@@ -223,6 +240,26 @@ class WSFE {
     print_r($results);
   }
 
+   /*
+   * Obtiene datos de un doc autorizado
+   */
+  public function getCompConsultar($ptovta,$cbtetipo,$numcbte)
+  {
+    $params->Auth->Token = $this->TA->credentials->token;
+    $params->Auth->Sign = $this->TA->credentials->sign;
+    $params->Auth->Cuit = self::CUIT;
+    $params->FeCompConsReq->CbteTipo = $cbtetipo;
+    $params->FeCompConsReq->CbteNro = $numcbte;
+	$params->FeCompConsReq->PtoVta = $ptovta;  
+	
+    $results = $this->client->FECompConsultar($params);
+    
+	$this->_checkErrors($results, 'FECompConsultar');
+//    print_r($results);
+    return $results;
+  }
+ 
+  
   /**
    * Setea el tipo de comprobante
    * A = 1

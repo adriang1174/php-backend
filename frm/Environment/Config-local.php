@@ -1,7 +1,7 @@
 <?php
 
         define( 'SSL_ENABLED'               , false);
-        define( 'URL_ROOT'                 , 'http://localhost/' );
+        define( 'URL_ROOT'                 , 'http://servidor/php-backend-m/' );
         define( 'SSL_URL_ROOT'             , 'https://staging.webar.net:8070/pruebas/ftl/sunbrella/' );
         define( 'PATH_UPLOADS'              , PATH_SITE . 'imgs_historias' . DS);
 

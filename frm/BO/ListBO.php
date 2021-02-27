@@ -255,8 +255,13 @@ class Ftl_ListBO {
     public function __construct( $options = array() ) {
 
         $this->_io = new Ftl_IOHelper();
-        $this->_io->addFromArray($_REQUEST);
         
+        $req = $_REQUEST;
+        if ($req['TIPFAC'] == "'77'" or $req['TIPFAC'] == "'777'")
+            $req['TIPFAC'] = "'7'";
+
+        //$this->_io->addFromArray($_REQUEST);
+        $this->_io->addFromArray($req);
 
         if ( isset( $options['orderFieldIgnore'] ) )
                 $this->_opt['orderFieldIgnore'] .= $options['orderFieldIgnore'];
@@ -386,7 +391,7 @@ class Ftl_ListBO {
 
 
 	    
-	    $html = "<div style=\"margin-left: 150px; font-size:14px;\"> Ultimo comprobante autorizado: <span style=\"color:#eb8f00;\">".$this->_opt[ 'ultnro' ]. "</span></div><br><br>";
+	    $html = "<div style=\"margin-left: 150px; font-size:14px;\"> Ultimo comprobante autorizado: <span id=\"ult\" style=\"color:#eb8f00;\">".$this->_opt[ 'ultnro' ]. "</span></div><br><br>";
         //$html .= "<span class=\"ui-filter-title\">Resultado de la búsqueda:</span>";
         $html .= "<div class=\"ui-state-active ui-helper-clearfix  ui-filter-titlebar\"><span class=\"ui-filter-title\">Resultado de la búsqueda:</span></div><br>";
         $html .= "<div id=\"table-content\"><table border=\"0\"   cellpadding=\"0\" cellspacing=\"0\" id=\"product-table\" class=\"ui-widget ui-widget-content ui-corner-all\">\n";
@@ -499,14 +504,16 @@ class Ftl_ListBO {
         $this->_jqueryOnLoad["change-status"] = "$('.change-status').click(function (){\n
                         _state = $(this).attr('state');\n
                         _urlState = $(this).attr('url');\n
-                        if (confirm('Deséa cambiar el estado del registro a ' + _state + '?')){\n
+                        if (confirm('Desea solicitar la información de este documento a AFIP y actualizar los valores en la base de datos?')){\n
                             UI.showModalLoader();\nJS.ajax.llamada({\n
                                 dataType: 'json',\n
                                 url : _urlState,\n
                                 alFinalizar: function (json){\n
                                                 UI.hideModalLoader();\n".(
                                                     isset($this->_opt [ 'jsEvents' ]) && isset($this->_opt [ 'jsEvents' ][ 'onChangeStatus' ]) && $this->_opt [ 'jsEvents' ][ 'onChangeStatus' ] != "" ? $this->_opt [ 'jsEvents' ][ 'onChangeStatus' ]."(json);":"if (json.state == 1){\n
-                                                    location.reload();return;\n
+                                                    //UI.alert(json.data,{title:'Atención', modal: true});\n
+													alert(json.data);
+													location.reload(true); return;\n
                                                 }else{\n
                                                     UI.alert(json.error.msg,{title:'Atención'});\n
                                                 }\n"
@@ -835,6 +842,8 @@ class Ftl_ListBO {
                             array_push($this->_filtersNames, $field);
                             break;
                         case "assoc":
+                            $io = new Ftl_IOHelper();
+                            $io->addFromArray($_REQUEST);
 
 							$this->_htmlFilter .= "<select id=\"".$this->replaceColName($field)."\" name=\"".$this->replaceColName($field)."\" ><option value=\"\" ". ($this->_io->get($this->replaceColName($field),(isset($defValue) ? $defValue : '')) == '' ? "selected" : "") . ">--</option>\n";
 
@@ -842,7 +851,8 @@ class Ftl_ListBO {
 
 								foreach($options[ 'data' ] as $k => $v)
 								{
-									$this->_htmlFilter .= "<option value=\"$k\" ". ($this->_io->get($this->replaceColName($field),$defValue) != "" && $this->_io->get($this->replaceColName($field),$defValue)     == $k ? "selected" : "") . ">$v</option>\n";
+									//$this->_htmlFilter .= "<option value=\"$k\" ". ($this->_io->get($this->replaceColName($field),$defValue) != "" && $this->_io->get($this->replaceColName($field),$defValue)     == $k ? "selected" : "") . ">$v</option>\n";
+                                    $this->_htmlFilter .= "<option value=\"$k\" ". ($this->_io->get($this->replaceColName($field),$defValue) != "" && $io->get($this->replaceColName($field),$defValue)     == $k ? "selected" : "") . ">$v</option>\n";
 								}
 
 							}
@@ -1109,8 +1119,10 @@ class Ftl_ListBO {
                         if ($value[$this->_opt['fieldStatus']] == $this->_opt['stateUnmoderatedValue'])
                         {
                             //$aux.= "<li class=\"change-status ui-state-default ui-corner-all info-tooltip\" title=\"Cambiar estado a {$this->_states[$this->_opt['stateEnabledValue']]}\"><a  state=\"{$this->_opt['stateEnabledValue']}\" href=\"javascript:void(0);\" id=\"changeRow_" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "|{$this->_opt['stateEnabledValue']}\" onclick=\"javascript:if (confirm('Deséa cambiar el estado del registro a {$this->_states[$this->_opt['stateEnabledValue']]}?')) document.location = '" . Ftl_Path::getFileName() . '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt',false) ."&amp;action=changeStatus&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) ."&amp;status=" . $this->_opt['stateEnabledValue'] . "';\"><span class=\"ui-icon ui-icon-check\"></span></a></li>\n";
-                            $aux_non_ext.= "<li class=\"ui-state-default ui-corner-all\" title=\"Cambiar estado a {$this->_states[$this->_opt['stateEnabledValue']]}\"><a class=\"change-status\" state=\"{$this->_states[$this->_opt['stateEnabledValue']]}\" href=\"javascript:void(0);\" url=\"" . ($this->_opt[ 'changeStatus' ] != null && $this->_opt[ 'changeStatus' ][ 'url' ] != null ? $this->_opt[ 'changeStatus' ]['url'] : "ajax/acciones-listado.php" ). '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt,table',false) ."&amp;action=changeStatus&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "&amp;table=" . $this->_opt['table'] . "&amp;status=" . $this->_opt['stateEnabledValue'] . "&amp;fancy=1" . ($this->_opt[ 'changeStatus' ]['params'] != null ? "&amp;" . $this->_opt[ 'changeStatus' ]['params'] : "") . "\"><span class=\"ui-icon ui-icon-check\"></span><span class=\"title\">Cambiar a {$this->_states[$this->_opt['stateEnabledValue']]}</span></a></li>\n";
-                            $aux_non_ext.= "<li class=\"ui-state-default ui-corner-all\" title=\"Cambiar estado a {$this->_states[$this->_opt['stateDisabledValue']]}\"><a class=\"change-status\" state=\"{$this->_states[$this->_opt['stateDisabledValue']]}\" href=\"javascript:void(0);\" url=\"" . ($this->_opt[ 'changeStatus' ] != null && $this->_opt[ 'changeStatus' ][ 'url' ] != null ? $this->_opt[ 'changeStatus' ]['url'] : "ajax/acciones-listado.php" ). '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt,table',false) ."&amp;action=changeStatus&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "&amp;table=" . $this->_opt['table'] . "&amp;status=" . $this->_opt['stateDisabledValue'] . "&amp;fancy=1" . ($this->_opt[ 'changeStatus' ]['params'] != null ? "&amp;" . $this->_opt[ 'changeStatus' ]['params'] : "") . "\"><span class=\"ui-icon ui-icon-closethick\"></span><span class=\"title\">Cambiar a {$this->_states[$this->_opt['stateDisabledValue']]}</span></a></li>";
+                            //$aux_non_ext.= "<li class=\"ui-state-default ui-corner-all\" title=\"Cambiar estado a {$this->_states[$this->_opt['stateEnabledValue']]}\"><a class=\"change-status\" state=\"{$this->_states[$this->_opt['stateEnabledValue']]}\" href=\"javascript:void(0);\" url=\"" . ($this->_opt[ 'changeStatus' ] != null && $this->_opt[ 'changeStatus' ][ 'url' ] != null ? $this->_opt[ 'changeStatus' ]['url'] : "ajax/acciones-listado.php" ). '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt,table',false) ."&amp;action=changeStatus&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "&amp;table=" . $this->_opt['table'] . "&amp;status=" . $this->_opt['stateEnabledValue'] . "&amp;fancy=1" . ($this->_opt[ 'changeStatus' ]['params'] != null ? "&amp;" . $this->_opt[ 'changeStatus' ]['params'] : "") . "\"><span class=\"ui-icon ui-icon-check\"></span><span class=\"title\">Cambiar a {$this->_states[$this->_opt['stateEnabledValue']]}</span></a></li>\n";
+                            $aux_non_ext.= "<li class=\"ui-state-default ui-corner-all\" title=\"Regrabar Datos AFIP\"><a class=\"change-status\" state=\"{$this->_states[$this->_opt['stateEnabledValue']]}\" href=\"javascript:void(0);\" url=\"" . '../getcae.php?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt,table',false) ."&amp;action=GetAFIP&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "&amp;table=" . $this->_opt['table'] . "&amp;status=" . $this->_opt['stateEnabledValue'] . "&amp;fancy=1" . ($this->_opt[ 'changeStatus' ]['params'] != null ? "&amp;" . $this->_opt[ 'changeStatus' ]['params'] : "") . "\"><span class=\"ui-icon ui-icon-check\"></span><span class=\"title\">Cambiar a {$this->_states[$this->_opt['stateEnabledValue']]}</span></a></li>\n";
+			    $aux_non_ext.= "<li class=\"ui-state-default ui-corner-all\" title=\"Imprimir QR\"><a class=\"print-qr\"  href=\"" . '../getqr.php?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt,table',false) ."&amp;action=GetAFIP&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "&amp;table=" . $this->_opt['table'] . "&amp;status=" . $this->_opt['stateEnabledValue'] . "&amp;fancy=1" . ($this->_opt[ 'changeStatus' ]['params'] != null ? "&amp;" . $this->_opt[ 'changeStatus' ]['params'] : "") . "\" target=\"_blank\"><span class=\"ui-icon ui-icon-print\"></span></a></li>\n";
+                            //$aux_non_ext.= "<li class=\"ui-state-default ui-corner-all\" title=\"Cambiar estado a {$this->_states[$this->_opt['stateDisabledValue']]}\"><a class=\"change-status\" state=\"{$this->_states[$this->_opt['stateDisabledValue']]}\" href=\"javascript:void(0);\" url=\"" . ($this->_opt[ 'changeStatus' ] != null && $this->_opt[ 'changeStatus' ][ 'url' ] != null ? $this->_opt[ 'changeStatus' ]['url'] : "ajax/acciones-listado.php" ). '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt,table',false) ."&amp;action=changeStatus&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "&amp;table=" . $this->_opt['table'] . "&amp;status=" . $this->_opt['stateDisabledValue'] . "&amp;fancy=1" . ($this->_opt[ 'changeStatus' ]['params'] != null ? "&amp;" . $this->_opt[ 'changeStatus' ]['params'] : "") . "\"><span class=\"ui-icon ui-icon-closethick\"></span><span class=\"title\">Cambiar a {$this->_states[$this->_opt['stateDisabledValue']]}</span></a></li>";
                             //$aux.= "<li class=\"change-status ui-state-default ui-corner-all info-tooltip\" title=\"Cambiar estado a {$this->_states[$this->_opt['stateDisabledValue']]}\"><a state=\"{$this->_opt['stateDisabledValue']}\" href=\"javascript:void(0);\" id=\"changeRow_" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) . "|{$this->_opt['stateDisabledValue']}\" onclick=\"javascript:if (confirm('Deséa cambiar el estado del registro a {$this->_states[$this->_opt['stateDisabledValue']]}?')) document.location = '" . Ftl_Path::getFileName() . '?' . Ftl_ArrayUtil::toQueryString($this->_io->getAll(), true, 'action,status,id,encrypt',false) ."&amp;action=changeStatus&amp;encrypt=" . (($this->_opt['encryptFieldId']) ? "1" : "0") . "&amp;id=" . (($this->_opt['encryptFieldId']) ? $value[$this->_opt['fieldIdEncrypted']] : $value[$this->_opt['fieldId']]) ."&amp;status=" . $this->_opt['stateDisabledValue'] . "';\"><span class=\"ui-icon ui-icon-closethick\"></span></a></li>";
                         }
 

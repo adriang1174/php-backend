@@ -29,9 +29,27 @@ $(document).ready(function () {
         $("#txtClave").val('');
 	return false;
 	});
-
 });
 
+//
+// Catching onchange TIPFAC
+//
+$(document).ready(function () {
+	$('#TIPFAC').on('change', function() {
+	  //alert( this.value ); // or $(this).val()
+	  
+	  $.ajax({url: "../ultnro.php?TIPFAC="+this.value.replace(/\'/g,''), success: function(result){
+        obj = JSON.parse(result);
+        //alert(obj.ultnro);
+        $("#ult").html(obj.ultnro);
+        $("#CODFACD").val(obj.codfacd );
+        $("#CODFACH").val(obj.codfach );
+    }});
+	  
+	  
+	});
+});
+//
 $(document).ready(function () {
 	$(".back-login").click(function () {
 

@@ -4,14 +4,24 @@ require 'exceptionhandler.php';
 require 'wsaa.class.php';
 require 'wsfe.class.php';
 
+require 'frm/init.php';
+require 'admin/config.php';
 /**********************
  * Ejemplo WSAA
  * ********************/
+ 
+// define(PATH_SITE,'')
 
 $wsaa = new WSAA('./'); 
 
+echo date("Y-m-d H:i:s");
 
-if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
+if("2018-09-15 10:36:04.485-03:00" < date("Y-m-d H:i:s"))
+    echo "Expirado";
+else
+    echo "No Expirado";
+
+if($wsaa->get_expiration() < date("Y-m-d H:i:s")) {
   if ($wsaa->generar_TA()) {
     echo 'obtenido nuevo TA';  
   } else {
@@ -20,9 +30,8 @@ if($wsaa->get_expiration() < date("Y-m-d h:m:i")) {
 } else {
   echo $wsaa->get_expiration();
 };
-
-
-
+        
+	
 /**********************
  * Ejemplo WSFE
  * ********************
@@ -37,13 +46,14 @@ if($wsfe->openTA())
 else
 	echo "WSFE open TA Error";
 
-//$wsfe->getTiposCbte();
+$r = $wsfe->getTiposCbte();
 //$wsfe->getTiposConcepto();
 //$wsfe->getTiposIva();
 //$wsfe->getTiposMonedas();
 //$wsfe->getTiposTributos();
 //$wsfe->getTiposDoc();
-
+//$r = $wsfe->getStatus();
+print_r($r);
  
  
 // devuelve el cae
@@ -66,10 +76,10 @@ $regfac['fecha_venc_pago'] = date('Ymd');
 //if($nro == false) echo "erorrrrrrr ultNro";
 //echo $nro;
 
-
+/*
 $cmp = $wsfe->recuperaLastCMP($ptovta, $tipocbte);
 if($cmp == false) echo "erorrrrrrr cmppp";
-
+*/
 
 /*
 $regfac['DocTipo'] = 80; //El cuit del comprador 

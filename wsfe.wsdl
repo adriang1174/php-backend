@@ -16,7 +16,7 @@ Web Service orientado al servicio de Facturacion electronica RG2485 V1
 <s:sequence>
 <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string"/>
 <s:element minOccurs="0" maxOccurs="1" name="Sign" type="s:string"/>
-<s:element minOccurs="1" maxOccurs="1" name="Cuit" type="s:long"/>
+<s:element minOccurs="1" maxOccurs="1" name="Cuit" type="s:string"/>
 </s:sequence>
 </s:complexType>
 <s:complexType name="FECAERequest">
@@ -51,7 +51,7 @@ Web Service orientado al servicio de Facturacion electronica RG2485 V1
 <s:sequence>
 <s:element minOccurs="1" maxOccurs="1" name="Concepto" type="s:int"/>
 <s:element minOccurs="1" maxOccurs="1" name="DocTipo" type="s:int"/>
-<s:element minOccurs="1" maxOccurs="1" name="DocNro" type="s:long"/>
+<s:element minOccurs="1" maxOccurs="1" name="DocNro" type="s:string"/>
 <s:element minOccurs="1" maxOccurs="1" name="CbteDesde" type="s:long"/>
 <s:element minOccurs="1" maxOccurs="1" name="CbteHasta" type="s:long"/>
 <s:element minOccurs="0" maxOccurs="1" name="CbteFch" type="s:string"/>
@@ -143,7 +143,7 @@ Web Service orientado al servicio de Facturacion electronica RG2485 V1
 </s:complexType>
 <s:complexType name="FECabResponse">
 <s:sequence>
-<s:element minOccurs="1" maxOccurs="1" name="Cuit" type="s:long"/>
+<s:element minOccurs="1" maxOccurs="1" name="Cuit" type="s:string"/>
 <s:element minOccurs="1" maxOccurs="1" name="PtoVta" type="s:int"/>
 <s:element minOccurs="1" maxOccurs="1" name="CbteTipo" type="s:int"/>
 <s:element minOccurs="0" maxOccurs="1" name="FchProceso" type="s:string"/>
@@ -171,7 +171,7 @@ Web Service orientado al servicio de Facturacion electronica RG2485 V1
 <s:sequence>
 <s:element minOccurs="1" maxOccurs="1" name="Concepto" type="s:int"/>
 <s:element minOccurs="1" maxOccurs="1" name="DocTipo" type="s:int"/>
-<s:element minOccurs="1" maxOccurs="1" name="DocNro" type="s:long"/>
+<s:element minOccurs="1" maxOccurs="1" name="DocNro" type="s:string"/>
 <s:element minOccurs="1" maxOccurs="1" name="CbteDesde" type="s:long"/>
 <s:element minOccurs="1" maxOccurs="1" name="CbteHasta" type="s:long"/>
 <s:element minOccurs="0" maxOccurs="1" name="CbteFch" type="s:string"/>

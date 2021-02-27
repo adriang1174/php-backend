@@ -2,7 +2,7 @@
 
 class WSAA {
 
-  const TA =    "xmlgenerados/TA.xml";         # Archivo con el Token y Sign
+  const TA =    "xmlgenerados\TA.xml";         # Archivo con el Token y Sign
   const WSDL = "wsaa.wsdl";      # The WSDL corresponding to WSAA
   const CERT = C_CERT;        # The X.509 certificate in PEM format
   const PRIVATEKEY = C_PRIVATEKEY;  # The private key correspoding to CERT (PEM)
@@ -51,9 +51,8 @@ class WSAA {
     if (!file_exists($this->path.self::WSDL)) $this->error .= " Failed to open ".self::WSDL;
     
     if(!empty($this->error)) {
-      throw new Exception('WSAA class. Faltan archivos necesarios para el funcionamiento ');
+      throw new Exception('WSAA class. Faltan archivos necesarios para el funcionamiento '.$this->error.$this->path.self::CERT);
     }
-    
     $this->client = new SoapClient($this->path.self::WSDL, array(
               'soap_version'   => SOAP_1_2,
               'location'       => self::URL,
@@ -77,7 +76,7 @@ class WSAA {
     $TRA->header->addChild('generationTime', date('c',date('U')-60));
     $TRA->header->addChild('expirationTime', date('c',date('U')+60));
     $TRA->addChild('service', $this->service);
-    $TRA->asXML($this->path.'xmlgenerados/TRA.xml');
+    $TRA->asXML($this->path.'xmlgenerados\TRA.xml');
   }
   
   /*
@@ -89,7 +88,7 @@ class WSAA {
    */
   private function sign_TRA()
   {
-    $STATUS = openssl_pkcs7_sign($this->path."xmlgenerados/TRA.xml", $this->path."xmlgenerados/TRA.tmp", "file://".$this->path.self::CERT,
+    $STATUS = openssl_pkcs7_sign($this->path."xmlgenerados\TRA.xml", $this->path."xmlgenerados\TRA.tmp", "file://".$this->path.self::CERT,
       array("file://".$this->path.self::PRIVATEKEY, self::PASSPHRASE),
       array(),
       !PKCS7_DETACHED
