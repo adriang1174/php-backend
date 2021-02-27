@@ -71,7 +71,6 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	 				$tipfac = $this->TIPFAC;
 	 				//$codfacd = $this->CODFACD + 100000;
 	 				//$codfach = $this->CODFACH + 100000;
-
 	 			}
 	 			elseif( $this->TIPFAC == "'77'") 
 	 			{
@@ -87,7 +86,7 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 	 			else
 	 			{
 	 				$tipfac = $this->TIPFAC;
-				
+		
 	 			}
 	 			$codfacd = $this->CODFACD ;
 	 			$codfach = $this->CODFACH ;	 
@@ -103,7 +102,6 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 						// FM => TIPFAC = 7, CODFAC > 10000  => TIPFAC = 7, CODFAC = CODFAC - 10000
 						// NCM => TIPFAC = 7, CODFAC > 80000  => TIPFAC = 77, CODFAC = CODFAC - 80000
 						// NDM => TIPFAC = 7, CODFAC > 90000 y w => TIPFAC = 777, CODFAC = CODFAC - 90000
-
 						//var_dump($row['CODFAC']);
 						if ($row['TIPFAC']== '7')
 						{

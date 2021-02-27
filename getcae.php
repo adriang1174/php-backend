@@ -125,5 +125,4 @@ $fac->guardar();
 //echo Ftl_JsonUtil::encode($resp);
 echo json_encode($resp);
 
-
 ?>

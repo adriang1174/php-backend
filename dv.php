@@ -23,4 +23,5 @@ if ($digito == 10) {
 $digito = 0;
 }
 echo $digito;
+
 ?>

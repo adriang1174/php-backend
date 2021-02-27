@@ -1,6 +1,4 @@
 <?php
-
-
 define("C_CUIT",     "20177397203");
 // Testing
 //define("C_CERT",     "keys\ghf.crt");
@@ -19,5 +17,4 @@ $dbname = "Z:/Archivos de programa/FactuSol 2000/Datos/0012021.MDB";
 //define ("DBNAME" ,"odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=C:\\Users\\Servidor\\Desktop\\0012021.MDB; Uid=; Pwd=;");
 define ("DBNAME" ,"odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=Z:\\Archivos de programa\\FactuSol 2000\\Datos\\0012021.MDB; Uid=; Pwd=;");
 define('DB', 'msaccess');
-
 ?>
