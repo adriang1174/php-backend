@@ -293,26 +293,43 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 						'Iva' => array( 'AlicIva' => $aliciva
 	                     				)
 						 );
-				  array_push($cbtes,$cbte);
-			    }
+				 //
+				 //Si el comprobante es Debito o Credito, se deberá informar de forma obligatoria los campos Fecha Comprobantes Asociados Desde/Hasta, o al menos un comprobante asociado.
+				 // Adecuacion RG 4540
+				 // Informamos periodo como FchDesde: 01-Enero del año anterior al comprobante, FchHasta: fecha del comprobante
+				 if($this->esCreditoDebito())
+					 $cbte['PeriodoAsoc'] = array('FchDesde' => date("Y",strtotime ("-1 year",strtotime($regfac->FECFAC)))."0101",
+												  'FchHasta' => date("Ymd",strtotime($regfac->FECFAC))	);
+				 
+				 array_push($cbtes,$cbte);
+			}
 
 			//print_r($cbtes);
+			//Factura A
 			if($this->TIPFAC == "'1'")
 				$tipo_cbte = '1';
+			//Factura B
 			if($this->TIPFAC == "'9'")
 				$tipo_cbte = '6';
+			//NC A
 			if($this->TIPFAC == "'2'")
 				$tipo_cbte = '3';
+			//NC B
 			if($this->TIPFAC == "'3'")
 				$tipo_cbte = '8';
+			//ND A
 			if($this->TIPFAC == "'5'")
 				$tipo_cbte = '2';
+			//ND B
 			if($this->TIPFAC == "'6'")
 				$tipo_cbte = '7';
+			//Factura M
 			if($this->TIPFAC == "'7'")
 				$tipo_cbte = '51';
+			//NC M
 			if($this->TIPFAC == "'77'")
 				$tipo_cbte = '53';
+			//ND M
 			if($this->TIPFAC == "'777'")
 				$tipo_cbte = '52';
 
@@ -338,6 +355,14 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 			//print_r($errors);
 			return $errors;
 				
+	}
+	
+	public function esCreditoDebito()
+	{
+		if($this->TIPFAC == "'2'" or $this->TIPFAC == "'3'" or $this->TIPFAC == "'5'" or $this->TIPFAC == "'6'" or $this->TIPFAC == "'77'" or $this->TIPFAC == "'777'")
+				return true;
+		else
+				return false;
 	}
 	
 	public function assignCAE($fecaedetresponse)
