@@ -298,9 +298,18 @@ class Ftl_LoteFacturas extends Ftl_ClaseBase{
 				 // Adecuacion RG 4540
 				 // Informamos periodo como FchDesde: 01-Enero del año anterior al comprobante, FchHasta: fecha del comprobante
 				 if($this->esCreditoDebito())
-					 $cbte['PeriodoAsoc'] = array('FchDesde' => date("Y",strtotime ("-1 year",strtotime($regfac->FECFAC)))."0101",
+				 {
+					 /*$cbte['CbtesAsoc'] = array( array('Tipo' => '',
+													   'PtoVta' => '',
+													   'Nro' => '',
+													   'Cuit' => '',
+													   'CbteFch' => ''
+														)
+												); */
+
+					$cbte['PeriodoAsoc'] = array('FchDesde' => date("Y",strtotime ("-0 year",strtotime($regfac->FECFAC)))."0101",
 												  'FchHasta' => date("Ymd",strtotime($regfac->FECFAC))	);
-				 
+				 }
 				 array_push($cbtes,$cbte);
 			}
 
