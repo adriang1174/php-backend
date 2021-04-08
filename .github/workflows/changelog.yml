@@ -25,6 +25,3 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Changelog
         uses: ScottBrenner/generate-changelog-action@master
-        id: Changelog
-        with:
-           package-dir: 'package.json'
