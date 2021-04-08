@@ -1,0 +1,28 @@
+name: Create Changelog
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+ tags:
+      - '*' # Push events to matching v*, i.e. v1.0, v20.15.10
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  create-changelog:
+    # Name the Job
+    name: Create Changelog
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+		# Uses Changelog Action
+		- name: generate-changelog-action
+		  uses: ScottBrenner/generate-changelog-action@v1.3.0	
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false		  
